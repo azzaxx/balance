@@ -3,53 +3,57 @@
     android:id="@+id/editBalanceLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-
+    android:orientation="vertical"
+    android:background="#fff333" 
+    android:padding="5dp">
+	
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
         android:background="#000000"
-        android:orientation="horizontal"
-        android:padding="10dp" >
-
-        <CheckBox
-            android:id="@+id/Dohod"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="#FFF000"
-            android:text="Доход" />
-
-        <CheckBox
-            android:id="@+id/Rashod"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="#FFF000"
-            android:text="Расход" />
-    </LinearLayout>
-
-    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="Data:" />
-
-    
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical" >
-
-        <EditText
-            android:id="@+id/EditTextInEditBalance"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#896512" />
-    </LinearLayout>
-
+        android:orientation="vertical">
+        
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:orientation="vertical"
+	        android:padding="30dp" >
+	        
+	        <Button 
+	            android:id="@+id/DohodButtonInWindow2"
+	            android:text="Доход"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:layout_margin="5dp"
+	            android:background="#00B945"
+	            android:layout_weight="1"/>
+	        
+	        <Button 
+	            android:id="@+id/RashodButtonInWindow2"
+	            android:text="Расход"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:layout_margin="5dp"
+	            android:background="#FF4940"
+	            android:layout_weight="1"/>
+	        
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="2"
+	        android:orientation="vertical" 
+	        android:padding="30dp">
+	        
+	        <Button 
+	            android:id="@+id/backInWindow2"
+	            android:background="#ffffff"
+	            android:text="Назад"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:layout_margin="5dp"/>
+	    </LinearLayout>
+	</LinearLayout>
 </LinearLayout>
