@@ -1,11 +1,18 @@
 package com.example.balance;
 
+import java.util.concurrent.TimeUnit;
+
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.widget.Button;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Window1 extends ActionBarActivity implements OnClickListener {
 	private Button editBalance;
@@ -34,6 +41,23 @@ public class Window1 extends ActionBarActivity implements OnClickListener {
 			Log.d("MyLog", "showBalance Pressed");
 		} else if (v.getId() == R.id.button3) {
 			Log.d("MyLog", "Exit Pressed");
+			
+			// Реализация всплывающего окна из нового лайаута
+			LayoutInflater inflater = getLayoutInflater();
+			View layout = inflater.inflate(R.layout.toast_layout,
+			                               (ViewGroup) findViewById(R.id.toast_layout_root));
+
+			TextView text = (TextView) layout.findViewById(R.id.text);
+			text.setText("BYE BYE!!!!!!");
+			Toast toast = new Toast(getApplicationContext());
+			toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+			toast.setDuration(Toast.LENGTH_LONG);
+			toast.setView(layout);
+			toast.show();
+		   
+			//TODO Не плохо было бы реализовать AsynkTask где-то тут.
+		    // Финиш - закрытие приложения
+//			finish();
 		}
 	}
 }
