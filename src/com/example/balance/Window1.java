@@ -1,7 +1,6 @@
 package com.example.balance;
 
-import java.util.concurrent.TimeUnit;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -37,6 +36,9 @@ public class Window1 extends ActionBarActivity implements OnClickListener {
 	public void onClick(View v) {
 		if(v.getId() == R.id.button1){
 			Log.d("MyLog", "EditBalance Pressed");
+			Intent intent = new Intent(this, Window2.class);
+			startActivity(intent);
+			
 		} else if (v.getId() == R.id.button2) {
 			Log.d("MyLog", "showBalance Pressed");
 		} else if (v.getId() == R.id.button3) {

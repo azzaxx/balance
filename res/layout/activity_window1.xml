@@ -26,19 +26,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Edit Balance"/>
+            android:text="Править баланс"/>
         <Button 
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Show Balance"/>
+            android:text="Показать баланс"/>
         <Button 
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="EXIT"/>
+            android:text="ВЫХОД"/>
+        
     </LinearLayout>
 
 </LinearLayout>
