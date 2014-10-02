@@ -10,6 +10,8 @@ import android.widget.Button;
 
 public class Window2 extends ActionBarActivity implements OnClickListener {
 	Button back;
+	Button dohod;
+	Button rashod;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -17,6 +19,10 @@ public class Window2 extends ActionBarActivity implements OnClickListener {
 		
 		back = (Button)findViewById(R.id.backInWindow2);
 		back.setOnClickListener(this);
+		dohod = (Button)findViewById(R.id.DohodButtonInWindow2);
+		dohod.setOnClickListener(this);
+		rashod = (Button)findViewById(R.id.RashodButtonInWindow2);
+		rashod.setOnClickListener(this);
 	}
 
 	@Override
@@ -24,6 +30,17 @@ public class Window2 extends ActionBarActivity implements OnClickListener {
 		if ( v.getId() == R.id.backInWindow2) {
 			Log.d("MyLog", "backinWindow2 pressed");
 			Intent intent = new Intent(this, Window1.class);
+			startActivity(intent);
+		}
+		if ( v.getId() == R.id.DohodButtonInWindow2) {
+			Log.d("MyLog", "DohodButtonInWindow2 pressed");
+			Intent intent = new Intent(this, Window3.class);
+			startActivity(intent);
+		}
+		
+		if ( v.getId() == R.id.RashodButtonInWindow2) {
+			Log.d("MyLog", "RashodButtonInWindow2 pressed");
+			Intent intent = new Intent(this, Window3.class);
 			startActivity(intent);
 		}
 	}

@@ -59,7 +59,7 @@ public class Window1 extends ActionBarActivity implements OnClickListener {
 		   
 			//TODO Не плохо было бы реализовать AsynkTask где-то тут.
 		    // Финиш - закрытие приложения
-//			finish();
+			finish();
 		}
 	}
 }

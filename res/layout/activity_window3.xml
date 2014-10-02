@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/editBalanceLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/editTextDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Введите дату"
+            android:textSize="20dp" 
+            android:layout_weight="1"/>
+       
+        <TextView
+            android:id="@+id/editTextSumm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Введите сумму"
+            android:textSize="20dp" 
+            android:layout_weight="1"/>
+        
+        <TextView
+            android:id="@+id/editTextNote"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Заметка"
+            android:textSize="20dp" 
+            android:layout_weight="1"/>
+        
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1.1">
+            
+            <Button
+                android:id="@+id/buttonOk" 
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="OK"
+                android:layout_weight="1"/>
+            
+            <Button
+                android:id="@+id/buttonCancel" 
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="Cancel"
+                android:layout_weight="1"/>
+            
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
