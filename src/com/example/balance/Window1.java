@@ -1,5 +1,7 @@
 package com.example.balance;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -41,6 +43,17 @@ public class Window1 extends ActionBarActivity implements OnClickListener {
 			
 		} else if (v.getId() == R.id.button2) {
 			Log.d("MyLog", "showBalance Pressed");
+			AlertDialog.Builder builder = new AlertDialog.Builder(Window1.this);
+		    LayoutInflater inflater = Window1.this.getLayoutInflater();
+		    builder.setView(inflater.inflate(R.layout.custom_dialog_lyaout, null))
+		    		.setTitle("Показать баланс")
+		    		.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		               public void onClick(DialogInterface dialog, int id) {
+		                   dialog.cancel();
+		               }
+		           });      
+		    AlertDialog alert = builder.create();
+			alert.show();
 		} else if (v.getId() == R.id.button3) {
 			Log.d("MyLog", "Exit Pressed");
 			
@@ -58,8 +71,7 @@ public class Window1 extends ActionBarActivity implements OnClickListener {
 			toast.show();
 		   
 			//TODO Не плохо было бы реализовать AsynkTask где-то тут.
-		    // Финиш - закрытие приложения
-			finish();
+//			finish();
 		}
 	}
 }
