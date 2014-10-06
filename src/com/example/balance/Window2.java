@@ -29,8 +29,7 @@ public class Window2 extends ActionBarActivity implements OnClickListener {
 	public void onClick(View v) {
 		if ( v.getId() == R.id.backInWindow2) {
 			Log.d("MyLog", "backinWindow2 pressed");
-			Intent intent = new Intent(this, Window1.class);
-			startActivity(intent);
+			finish();
 		}
 		if ( v.getId() == R.id.DohodButtonInWindow2) {
 			Log.d("MyLog", "DohodButtonInWindow2 pressed");
