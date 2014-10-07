@@ -5,9 +5,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <TextView 
-        android:id="@+id/textViewInShowAll"
+    <ScrollView 
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+	    <TextView 
+	        android:id="@+id/textViewInShowAll"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"/>
+	</ScrollView>
+	
+	<Button 
+	    android:id="@+id/clearButtonInShowAll"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_weight="5"
+	    android:text="Очистить базу"/>
+	
 </LinearLayout>

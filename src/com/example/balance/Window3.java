@@ -30,6 +30,7 @@ public class Window3 extends Activity implements OnClickListener {
 	private int myMonth = 10;
 	private int myDay = 04;
 	private DBSQlite myDb;
+	private final String tableName =  "SQLiteTable";
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,7 +46,7 @@ public class Window3 extends Activity implements OnClickListener {
 		cancel.setOnClickListener(this);
 		date.setOnClickListener(this);
 		summ.setOnClickListener(this);
-		myDb = new DBSQlite(this, "SQLiteTable", null, 1);
+		myDb = new DBSQlite(this, tableName, null, 1);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -62,7 +63,7 @@ public class Window3 extends Activity implements OnClickListener {
 			cv.put("date", dateText);
 			cv.put("summ", summText);
 			cv.put("notify", notifyText);
-			long rowID = db.insert("SQLiteTable", null, cv);
+			long rowID = db.insert(tableName, null, cv);
 			Log.d("MyLog", "--- Rows in SQLiteTable: --- " + rowID);
 			
 			finish();
@@ -71,7 +72,7 @@ public class Window3 extends Activity implements OnClickListener {
 		} else if (v.getId() == R.id.editTextDate) {
 			showDialog(DIALOG_DATE);
 		} else if (v.getId() == R.id.editTextSumm) {
-//			Cursor c = db.query("SQLiteTable", null, null, null, null, null, null);
+//			Cursor c = db.query(tableName, null, null, null, null, null, null);
 //			
 //			if (c.moveToFirst()) {
 //				int getid = c.getColumnIndex("id");
@@ -125,7 +126,7 @@ public class Window3 extends Activity implements OnClickListener {
 
     	public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
     		myYear = year;
-    		myMonth = monthOfYear +1;
+    		myMonth = monthOfYear;
     		myDay = dayOfMonth;
     		date.setText("Добавленно: " + myDay + "." + myMonth + "." + myYear);
     	}

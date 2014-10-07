@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DBSQlite extends SQLiteOpenHelper{
+public class DBSQlite extends SQLiteOpenHelper {
 
 	public DBSQlite(Context context, String name, CursorFactory factory,
 			int version) {
