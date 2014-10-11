@@ -7,7 +7,8 @@ import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
-import android.database.Cursor;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +22,7 @@ import android.widget.TextView;
 
 public class Window3 extends Activity implements OnClickListener {
 	private TextView date;
-	private TextView summ;
+	private EditText summ;
 	private EditText notify;
 	private Button ok;
 	private Button cancel;
@@ -30,14 +31,15 @@ public class Window3 extends Activity implements OnClickListener {
 	private int myMonth = 10;
 	private int myDay = 04;
 	private DBSQlite myDb;
-	private final String tableName =  "SQLiteTable";
+	private final String tableName = "MySQLiteTable";
+	private String key;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_window3);
 		
 		date = (TextView)findViewById(R.id.editTextDate);
-		summ = (TextView)findViewById(R.id.editTextSumm);
+		summ = (EditText)findViewById(R.id.editTextSumm);
 		notify = (EditText)findViewById(R.id.editTextNote);
 		ok = (Button)findViewById(R.id.buttonOk);
 		cancel = (Button)findViewById(R.id.buttonCancel);
@@ -47,6 +49,9 @@ public class Window3 extends Activity implements OnClickListener {
 		date.setOnClickListener(this);
 		summ.setOnClickListener(this);
 		myDb = new DBSQlite(this, tableName, null, 1);
+		Intent intent = getIntent();
+		key = intent.getStringExtra(Window2.INTENT_EXTRA_MESSAGE);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -59,56 +64,39 @@ public class Window3 extends Activity implements OnClickListener {
 		String notifyText = notify.getText().toString();
 		
 		if (v.getId() == R.id.buttonOk) {
-			Log.d("MyLog", "----Insert in SQLiteTable ----");
-			cv.put("date", dateText);
-			cv.put("summ", summText);
-			cv.put("notify", notifyText);
-			long rowID = db.insert(tableName, null, cv);
-			Log.d("MyLog", "--- Rows in SQLiteTable: --- " + rowID);
-			
+			Log.d("MyLog", "DataText: " + dateText + " SummText: " + summText);
+			if ( summText.length() != 0 ) {
+				cv.put("date", dateText);
+				cv.put("summ", key + summText + ".00UAH");
+				cv.put("notify", notifyText);
+				cv.put("key", key);
+				db.insert(tableName, null, cv);
+			}
+			Log.d("MyLog", "Database look like: " + dateText + ", " + summText + ", " + notifyText
+					+ ", " + key);
 			finish();
 		} else if (v.getId() == R.id.buttonCancel) {
 			finish();
 		} else if (v.getId() == R.id.editTextDate) {
 			showDialog(DIALOG_DATE);
 		} else if (v.getId() == R.id.editTextSumm) {
-//			Cursor c = db.query(tableName, null, null, null, null, null, null);
-//			
-//			if (c.moveToFirst()) {
-//				int getid = c.getColumnIndex("id");
-//				int getDate = c.getColumnIndex("date");
-//				int getSumm = c.getColumnIndex("summ");
-//				int getnotify = c.getColumnIndex("notify");
-//				
-//				do {
-//			          Log.d("MyLog",
-//			              "ID = " + c.getInt(getid) + 
-//			              ", Date = " + c.getString(getDate) + 
-//			              ", Summ = " + c.getString(getSumm) +
-//			              ", Notify = " + c.getString(getnotify));
-//			        } while (c.moveToNext());
-//			} else {
-//			        Log.d("MyLog", "0 rows");
-//			}
-//			
-//			c.close();
-			      
-			AlertDialog.Builder builder = new AlertDialog.Builder(Window3.this);
-		    LayoutInflater inflater = Window3.this.getLayoutInflater();
-		    builder.setView(inflater.inflate(R.layout.custom_dialog_lyaout, null))
-		           .setNegativeButton("OK", new DialogInterface.OnClickListener() {
-		               @Override
-		               public void onClick(DialogInterface dialog, int id) {
-		            	   dialog.cancel();
-		               }
-		           })
-		           .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-		               public void onClick(DialogInterface dialog, int id) {
-		                   dialog.cancel();
-		               }
-		           });      
-		    AlertDialog alert = builder.create();
-			alert.show();
+			
+//			AlertDialog.Builder builder = new AlertDialog.Builder(Window3.this);
+//		    LayoutInflater inflater = Window3.this.getLayoutInflater();
+//		    builder.setView(inflater.inflate(R.layout.custom_dialog_lyaout, null))
+//		           .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+//		               @Override
+//		               public void onClick(DialogInterface dialog, int id) {
+//		            	   dialog.cancel();
+//		               }
+//		           })
+//		           .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+//		               public void onClick(DialogInterface dialog, int id) {
+//		                   dialog.cancel();
+//		               }
+//		           });      
+//		    AlertDialog alert = builder.create();
+//			alert.show();
 		}
 	}
 	

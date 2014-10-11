@@ -10,17 +10,18 @@ public class DBSQlite extends SQLiteOpenHelper {
 
 	public DBSQlite(Context context, String name, CursorFactory factory,
 			int version) {
-		super(context, "SQLiteTable", null, 1);
+		super(context, "MySQLiteTable", null, 1);
 	}
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		Log.d("MyLog", "SQLiteDatabase created");
-		db.execSQL("CREATE table SQLiteTable ("
+		db.execSQL("CREATE table MySQLiteTable ("
 		          + "id integer primary key autoincrement," 
 		          + "date text,"
 		          + "summ text,"
-		          + "notify text"+ ");");
+		          + "notify text,"
+		          + "key text" + ");");
 	}
 
 	@Override

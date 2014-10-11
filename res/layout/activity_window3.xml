@@ -16,16 +16,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Введите дату"
+            android:hint="Введите дату"
             android:textSize="20dp" 
             android:layout_weight="1"/>
        
-        <TextView
+        <EditText
             android:id="@+id/editTextSumm"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Введите сумму"
+            android:inputType="number"
+            android:hint="Введите сумму"
             android:textSize="20dp" 
             android:layout_weight="1"/>
         
@@ -34,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Заметка"
+            android:hint="Заметка"
             android:textSize="20dp" 
             android:layout_weight="1"/>
         
