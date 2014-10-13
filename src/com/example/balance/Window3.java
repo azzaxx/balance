@@ -1,5 +1,7 @@
 package com.example.balance;
 
+import java.util.Calendar;
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -9,7 +11,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,18 +19,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class Window3 extends Activity implements OnClickListener {
+	private Calendar cal = Calendar.getInstance(); 
 	private TextView date;
 	private EditText summ;
 	private EditText notify;
 	private Button ok;
 	private Button cancel;
 	private int DIALOG_DATE = 1;
-	private int myYear = 2014;
-	private int myMonth = 10;
-	private int myDay = 04;
+	private int myYear = cal.get(Calendar.YEAR);
+	private int myMonth = cal.get(Calendar.MONTH);
+	private int myDay = cal.get(Calendar.DAY_OF_MONTH);
 	private DBSQlite myDb;
 	private final String tableName = "MySQLiteTable";
 	private String key;
+	private String[] month = {"Янв", "Фев", "Март", "Апр", "Май", "Июнь", "Июль", "Авг"
+							, "Сент", "Окт", "Нояб", "Декаб"};
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,6 +49,9 @@ public class Window3 extends Activity implements OnClickListener {
 		cancel.setOnClickListener(this);
 		date.setOnClickListener(this);
 		summ.setOnClickListener(this);
+
+		date.setText("Добавленно: " + myDay + "." + month[myMonth] + "." + myYear + "г.");
+
 		myDb = new DBSQlite(this, tableName, null, 1);
 		Intent intent = getIntent();
 		key = intent.getStringExtra(Window2.INTENT_EXTRA_MESSAGE);
@@ -61,7 +68,6 @@ public class Window3 extends Activity implements OnClickListener {
 		String notifyText = notify.getText().toString();
 		
 		if (v.getId() == R.id.buttonOk) {
-			Log.d("MyLog", "DataText: " + dateText + " SummText: " + summText);
 			if ( summText.length() != 0 ) {
 				cv.put("date", dateText);
 				cv.put("summ", key + summText);
@@ -92,10 +98,10 @@ public class Window3 extends Activity implements OnClickListener {
     OnDateSetListener myCallBack = new OnDateSetListener() {
 
     	public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-    		myYear = year;
-    		myMonth = monthOfYear;
-    		myDay = dayOfMonth;
-    		date.setText("Добавленно: " + myDay + "." + myMonth + "." + myYear);
+//    		myYear = year;
+//    		myMonth = monthOfYear;
+//    		myDay = dayOfMonth;
+    		date.setText("Добавленно: " + dayOfMonth + "." + month[monthOfYear] + "." + year + "г.");
     	}
       };
 }
