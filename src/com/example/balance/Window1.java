@@ -7,14 +7,10 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class Window1 extends ActionBarActivity implements OnClickListener {
 	private Button editBalance;
@@ -49,8 +45,6 @@ public class Window1 extends ActionBarActivity implements OnClickListener {
 			Intent intent = new Intent(this, ShowAll.class);
 			startActivity(intent);
 		} else if (v.getId() == R.id.button3) {
-			Log.d("MyLog", "Exit Pressed");
-			
 			AlertDialog.Builder builder = new AlertDialog.Builder(Window1.this);
 		    LayoutInflater inflater = Window1.this.getLayoutInflater();
 		    builder.setView(inflater.inflate(R.layout.exit_dialog_lyaout, null))

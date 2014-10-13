@@ -1,18 +1,15 @@
 package com.example.balance;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -72,8 +69,6 @@ public class Window3 extends Activity implements OnClickListener {
 				cv.put("key", key);
 				db.insert(tableName, null, cv);
 			}
-			Log.d("MyLog", "Database look like: " + dateText + ", " + summText + ", " + notifyText
-					+ ", " + key);
 			finish();
 		} else if (v.getId() == R.id.buttonCancel) {
 			finish();
@@ -81,22 +76,6 @@ public class Window3 extends Activity implements OnClickListener {
 			showDialog(DIALOG_DATE);
 		} else if (v.getId() == R.id.editTextSumm) {
 			
-//			AlertDialog.Builder builder = new AlertDialog.Builder(Window3.this);
-//		    LayoutInflater inflater = Window3.this.getLayoutInflater();
-//		    builder.setView(inflater.inflate(R.layout.custom_dialog_lyaout, null))
-//		           .setNegativeButton("OK", new DialogInterface.OnClickListener() {
-//		               @Override
-//		               public void onClick(DialogInterface dialog, int id) {
-//		            	   dialog.cancel();
-//		               }
-//		           })
-//		           .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-//		               public void onClick(DialogInterface dialog, int id) {
-//		                   dialog.cancel();
-//		               }
-//		           });      
-//		    AlertDialog alert = builder.create();
-//			alert.show();
 		}
 	}
 	

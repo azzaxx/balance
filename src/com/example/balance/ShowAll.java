@@ -7,7 +7,6 @@ import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListAdapter;
 
 public class ShowAll extends ListActivity {
@@ -36,8 +35,6 @@ public class ShowAll extends ListActivity {
 				String a = c.getString(getSumm);
 				String b = a.substring(1);
 				int d = Integer.parseInt(b);
-				Log.d("MyLog", "New string is: " + b + " A string is: " + a + " D is: " + d);
-				
 				if (c.getString(getSumm).charAt(0) == (char)43) {
 					total += d;
 				} else {
@@ -57,10 +54,9 @@ public class ShowAll extends ListActivity {
 			} else if ( total > 0 ) {
 				totalTwo = "+" + String.valueOf(total) + ".00UAH";
 			} else {
-				totalTwo = "-" + String.valueOf(total) + ".00UAH";
+				totalTwo = String.valueOf(total) + ".00UAH";
 			}
 			list.add(new MyList("Итого:", totalTwo, null, null));
-			Log.d("MyLog", "Total is: " + total);
 		}
 		
 		String[] from = {"date", "summ", "notify" };
