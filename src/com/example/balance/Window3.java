@@ -67,7 +67,7 @@ public class Window3 extends Activity implements OnClickListener {
 			Log.d("MyLog", "DataText: " + dateText + " SummText: " + summText);
 			if ( summText.length() != 0 ) {
 				cv.put("date", dateText);
-				cv.put("summ", key + summText + ".00UAH");
+				cv.put("summ", key + summText);
 				cv.put("notify", notifyText);
 				cv.put("key", key);
 				db.insert(tableName, null, cv);
