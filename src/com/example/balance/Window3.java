@@ -3,14 +3,18 @@ package com.example.balance;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,7 +25,7 @@ import android.widget.TextView;
 public class Window3 extends Activity implements OnClickListener {
 	private Calendar cal = Calendar.getInstance(); 
 	private TextView date;
-	private EditText summ;
+	private TextView summ;
 	private EditText notify;
 	private Button ok;
 	private Button cancel;
@@ -40,17 +44,17 @@ public class Window3 extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_window3);
 		
 		date = (TextView)findViewById(R.id.editTextDate);
-		summ = (EditText)findViewById(R.id.editTextSumm);
+		summ = (TextView)findViewById(R.id.editTextSumm);
 		notify = (EditText)findViewById(R.id.editTextNote);
 		ok = (Button)findViewById(R.id.buttonOk);
 		cancel = (Button)findViewById(R.id.buttonCancel);
-		
 		ok.setOnClickListener(this);
 		cancel.setOnClickListener(this);
 		date.setOnClickListener(this);
 		summ.setOnClickListener(this);
 
 		date.setText("Добавленно: " + myDay + "." + month[myMonth] + "." + myYear + "г.");
+//		summ.setText("Введите сумму");
 
 		myDb = new DBSQlite(this, tableName, null, 1);
 		Intent intent = getIntent();
@@ -81,7 +85,169 @@ public class Window3 extends Activity implements OnClickListener {
 		} else if (v.getId() == R.id.editTextDate) {
 			showDialog(DIALOG_DATE);
 		} else if (v.getId() == R.id.editTextSumm) {
-			
+			AlertDialog.Builder dialog = new AlertDialog.Builder(Window3.this);
+			LayoutInflater inflater = LayoutInflater.from(Window3.this);
+			View vw = inflater.inflate(R.layout.custom_dialog_lyaout, null);
+		    dialog.setView(vw);
+		    final TextView text = (TextView) vw.findViewById(R.id.username);
+		    text.setText("0");
+		    
+		    Button one = (Button) vw.findViewById(R.id.buttonOne);
+		    Button two = (Button) vw.findViewById(R.id.buttonTwo);
+		    Button three = (Button) vw.findViewById(R.id.buttonThree);
+		    Button four = (Button) vw.findViewById(R.id.buttonFour);
+		    Button five = (Button) vw.findViewById(R.id.buttonFive);
+		    Button six = (Button) vw.findViewById(R.id.buttonSix);
+		    Button seven = (Button) vw.findViewById(R.id.buttonSeven);
+		    Button eight = (Button) vw.findViewById(R.id.buttonEight);
+		    Button nine = (Button) vw.findViewById(R.id.buttonNine);
+		    Button zero = (Button) vw.findViewById(R.id.buttonZero);
+		    Button clear = (Button) vw.findViewById(R.id.buttonClear);
+		    Button bck = (Button) vw.findViewById(R.id.buttonBck);
+		    
+		    one.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					if ( (String) text.getText() == "0" ) {
+						text.setText("1");
+					} else if ( text.getText().length() < 12 ) {
+						String te = (String) text.getText();
+						text.setText(te + "1");
+					}
+				}
+		    });
+		    
+			two.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					if ( (String) text.getText() == "0" ) {
+						text.setText("2");
+					} else if ( text.getText().length() < 12 ) {
+						String te = (String) text.getText();
+						text.setText(te + "2");
+					}
+				}
+			}); 
+			three.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					if ( (String) text.getText() == "0" ) {
+						text.setText("3");
+					} else if ( text.getText().length() < 12 ) {
+						String te = (String) text.getText();
+						text.setText(te + "3");
+					}
+				}
+			}); 
+			four.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					if ( (String) text.getText() == "0" ) {
+						text.setText("4");
+					} else if ( text.getText().length() < 12 ) {
+						String te = (String) text.getText();
+						text.setText(te + "4");
+					}
+				}
+			}); 
+			five.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					if ( (String) text.getText() == "0" ) {
+						text.setText("5");
+					} else if ( text.getText().length() < 12 ) {
+						String te = (String) text.getText();
+						text.setText(te + "5");
+					}
+				}
+			}); 
+			six.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					if ( (String) text.getText() == "0" ) {
+						text.setText("6");
+					} else if ( text.getText().length() < 12 ) {
+						String te = (String) text.getText();
+						text.setText(te + "6");
+					}
+				}
+			}); 
+			seven.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					if ( (String) text.getText() == "0" ) {
+						text.setText("7");
+					} else if ( text.getText().length() < 12 ) {
+						String te = (String) text.getText();
+						text.setText(te + "7");
+					}
+				}
+			}); 
+			eight.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					if ( (String) text.getText() == "0" ) {
+						text.setText("8");
+					} else if ( text.getText().length() < 12 ) {
+						String te = (String) text.getText();
+						text.setText(te + "8");
+					}
+				}
+			}); 
+			nine.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					if ( (String) text.getText() == "0" ) {
+						text.setText("9");
+					} else if ( text.getText().length() < 12 ) {
+						String te = (String) text.getText();
+						text.setText(te + "9");
+					}
+				}
+			}); 
+			zero.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					if ( (String) text.getText() == "0" ) {
+						text.setText("0");
+					} else if ( text.getText().length() < 12 ) {
+						String te = (String) text.getText();
+						text.setText(te + "0");
+					}
+				}
+			});
+			clear.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					text.setText("0");
+				}
+			});
+			bck.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					if (text.getText().length() > 1) {
+						String te = (String) text.getText();
+						int len = text.getText().length();
+						text.setText(te.substring(0, len-1));
+					} else if ( text.getText().length() == 1 ) {
+						text.setText("0");
+					}
+				}
+			});
+		    dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
+	               public void onClick(DialogInterface dialog, int id) {
+	            	   String te = (String) text.getText();
+	            	   summ.setText(te);
+	            	   dialog.cancel();
+	               }
+		    });
+		    dialog.setNegativeButton("Отменить", new DialogInterface.OnClickListener() {
+	               public void onClick(DialogInterface dialog, int id) {
+	                   dialog.cancel();
+	               }
+		    });
+//			Button ok = (Button) findViewById(R.id.buttonokKk);
+//			ok.setOnClickListener(new OnClickListener() {
+//				public void onClick(View v) {
+//					String te = (String) text.getText();
+//					summ.setText(te);
+//					dialog.dismiss();
+//				}
+//			}); Button cancel = (Button) dialog.findViewById(R.id.buttonCanc2);
+//			cancel.setOnClickListener(new OnClickListener() {
+//				public void onClick(View v) {
+//					dialog.dismiss();
+//				}
+//			});
+			dialog.show();
 		}
 	}
 	
@@ -90,18 +256,13 @@ public class Window3 extends Activity implements OnClickListener {
         if (id == DIALOG_DATE) {
         	DatePickerDialog tpd = new DatePickerDialog(this, myCallBack, myYear, myMonth, myDay);
         	return tpd;
-        }
-       
+        }       
         return super.onCreateDialog(id);
     }
-      
+    
     OnDateSetListener myCallBack = new OnDateSetListener() {
-
-    	public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//    		myYear = year;
-//    		myMonth = monthOfYear;
-//    		myDay = dayOfMonth;
-    		date.setText("Добавленно: " + dayOfMonth + "." + month[monthOfYear] + "." + year + "г.");
-    	}
-      };
+		public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+			date.setText("Добавленно: " + dayOfMonth + "." + month[monthOfYear] + "." + year + "г.");
+		}
+    };
 }
