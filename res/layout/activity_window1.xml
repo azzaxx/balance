@@ -4,13 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.balance.Window1"
-    tools:ignore="MergeRootFrame" >
-
+    android:background="#38455a"
+    android:paddingTop="7dp" >
+    
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#FFBB33"
+        android:scaleType="center"
+        android:src="@drawable/ic_launcher" />
+    
     <TextView
-        android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="94dp"
+        android:textColor="#ff3737"
         android:textSize="60dp"
         android:gravity="center"
         android:text="BALANCE" />
@@ -21,25 +28,46 @@
         android:orientation="vertical"
         android:padding="40dp">
         
-        <Button 
+        <Button
             android:id="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="4dp"
             android:layout_weight="1"
+            android:background="#ffffff"
+            android:shadowColor="#8f9db5"
+            android:shadowDx="5"
+            android:shadowDy="9"
+            android:shadowRadius="10.1"
+            android:textColor="#ff3737"
             android:text="Править баланс"/>
-        <Button 
+
+        <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="4dp"
             android:layout_weight="1"
-            android:text="Показать баланс"/>
-        <Button 
+            android:background="#ffffff"
+            android:shadowColor="#8f9db5"
+            android:shadowDx="5"
+            android:shadowDy="9"
+            android:shadowRadius="10.1"
+            android:text="Показать баланс"
+            android:textColor="#ff3737" />
+
+        <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="ВЫХОД"/>
+            android:background="#ffffff"
+            android:shadowColor="#8f9db5"
+            android:shadowDx="5"
+            android:shadowDy="9"
+            android:shadowRadius="10.1"
+            android:text="ВЫХОД"
+            android:textColor="#ff3737" />
         
     </LinearLayout>
-
 </LinearLayout>

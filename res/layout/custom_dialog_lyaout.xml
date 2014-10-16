@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_weight="0.43"
-        android:background="#FFFFBB33"
+        android:background="#FFBB33"
         android:contentDescription="@string/app_name"
         android:scaleType="center"
         android:src="@drawable/ic_launcher" />

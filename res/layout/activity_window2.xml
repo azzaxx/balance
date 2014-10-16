@@ -4,15 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff333" 
-    android:padding="5dp">
-	
-    <LinearLayout
-        android:background="#000000"
+    android:background="#38455a"
+    android:paddingTop="7dp" >
+    
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        
+        android:layout_height="64dp"
+        android:background="#FFBB33"
+        android:scaleType="center"
+        android:src="@drawable/ic_launcher" />
+    
 	    <LinearLayout
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
@@ -25,18 +26,28 @@
 	            android:text="Доход"
 	            android:layout_width="match_parent"
 	            android:layout_height="match_parent"
-	            android:layout_margin="5dp"
-	            android:background="#00B945"
-	            android:layout_weight="1"/>
+	            android:layout_marginRight="2dp"
+	            android:layout_weight="1"
+	            android:background="#ffffff"
+	            android:shadowColor="#8f9db5"
+	            android:shadowDx="5"
+	            android:shadowDy="9"
+	            android:shadowRadius="10.1"
+	            android:textColor="#ff3737"/>
 	        
 	        <Button 
 	            android:id="@+id/RashodButtonInWindow2"
 	            android:text="Расход"
 	            android:layout_width="match_parent"
 	            android:layout_height="match_parent"
-	            android:layout_margin="5dp"
-	            android:background="#FF4940"
-	            android:layout_weight="1"/>
+	            android:layout_marginLeft="2dp"
+	            android:layout_weight="1"
+	            android:background="#ffffff"
+	            android:shadowColor="#8f9db5"
+	            android:shadowDx="5"
+	            android:shadowDy="9"
+	            android:shadowRadius="10.1"
+	            android:textColor="#ff3737"/>
 	        
 	    </LinearLayout>
 	    
@@ -48,21 +59,30 @@
 	        
 	        <Button 
 	            android:id="@+id/clearButtonInWindow2"
-	            android:background="#ffffff"
 	            android:text="Обнулить базу"
 	            android:layout_width="match_parent"
 	            android:layout_height="match_parent"
+	            android:layout_marginBottom="4dp"
 	            android:layout_weight="1"
-	            android:layout_margin="5dp"/>
+	            android:background="#ffffff"
+	            android:shadowColor="#8f9db5"
+	            android:shadowDx="5"
+	            android:shadowDy="9"
+	            android:shadowRadius="10.1"
+	            android:textColor="#ff3737"/>
 	        
 	        <Button 
 	            android:id="@+id/backInWindow2"
-	            android:background="#ffffff"
 	            android:text="Назад"
 	            android:layout_width="match_parent"
 	            android:layout_height="match_parent"
+	            android:layout_marginBottom="4dp"
 	            android:layout_weight="1"
-	            android:layout_margin="5dp"/>
+	            android:background="#ffffff"
+	            android:shadowColor="#8f9db5"
+	            android:shadowDx="5"
+	            android:shadowDy="9"
+	            android:shadowRadius="10.1"
+	            android:textColor="#ff3737"/>
 	    </LinearLayout>
-	</LinearLayout>
 </LinearLayout>
