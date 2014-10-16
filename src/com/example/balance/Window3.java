@@ -54,7 +54,7 @@ public class Window3 extends Activity implements OnClickListener {
 		summ.setOnClickListener(this);
 
 		date.setText("Добавленно: " + myDay + "." + month[myMonth] + "." + myYear + "г.");
-//		summ.setText("Введите сумму");
+		summ.setText("Введите сумму");
 
 		myDb = new DBSQlite(this, tableName, null, 1);
 		Intent intent = getIntent();
@@ -222,31 +222,18 @@ public class Window3 extends Activity implements OnClickListener {
 					}
 				}
 			});
-		    dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
+		    dialog.setNegativeButton("Добавить", new DialogInterface.OnClickListener() {
 	               public void onClick(DialogInterface dialog, int id) {
 	            	   String te = (String) text.getText();
 	            	   summ.setText(te);
 	            	   dialog.cancel();
 	               }
 		    });
-		    dialog.setNegativeButton("Отменить", new DialogInterface.OnClickListener() {
+		    dialog.setPositiveButton("Отменить", new DialogInterface.OnClickListener() {
 	               public void onClick(DialogInterface dialog, int id) {
 	                   dialog.cancel();
 	               }
 		    });
-//			Button ok = (Button) findViewById(R.id.buttonokKk);
-//			ok.setOnClickListener(new OnClickListener() {
-//				public void onClick(View v) {
-//					String te = (String) text.getText();
-//					summ.setText(te);
-//					dialog.dismiss();
-//				}
-//			}); Button cancel = (Button) dialog.findViewById(R.id.buttonCanc2);
-//			cancel.setOnClickListener(new OnClickListener() {
-//				public void onClick(View v) {
-//					dialog.dismiss();
-//				}
-//			});
 			dialog.show();
 		}
 	}
