@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 
 public class Window1 extends ActionBarActivity implements OnClickListener {
@@ -20,6 +21,7 @@ public class Window1 extends ActionBarActivity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_window1);
 		
 		editBalance = (Button)findViewById(R.id.button1);

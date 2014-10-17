@@ -4,8 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#38455a"
-    android:paddingTop="7dp" >
+    android:background="#ffbb33"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:paddingBottom="3dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+   		android:layout_height="match_parent"
+   		android:orientation="vertical"
+   		android:background="#211A0B">
     
     <ImageView
         android:layout_width="match_parent"
@@ -95,12 +102,12 @@
 		            android:layout_height="match_parent"
 		            android:layout_marginRight="4dp"
 		            android:layout_weight="1"
-		            android:background="#ffffff"
+		            android:background="@drawable/linear_selector"
 		            android:shadowColor="#8f9db5"
 		            android:shadowDx="5"
 		            android:shadowDy="9"
 		            android:shadowRadius="10.1"
-		            android:textColor="#ff3737"/>
+		            android:textColor="#ffffff"/>
 	            
 	            <Button
 	                android:id="@+id/buttonCancel" 
@@ -108,16 +115,16 @@
 		            android:layout_height="match_parent"
 		            android:layout_marginLeft="4dp"
 		            android:layout_weight="1"
-		            android:background="#ffffff"
+		            android:background="@drawable/linear_selector"
 		            android:shadowColor="#8f9db5"
 		            android:shadowDx="5"
 		            android:shadowDy="9"
 		            android:shadowRadius="10.1"
-		            android:textColor="#ff3737"
+		            android:textColor="#ffffff"
 	                android:text="Отменить"/>
 	            
 	        </LinearLayout>
-	
+		</LinearLayout>
 	    </LinearLayout>
 	</LinearLayout>
 </LinearLayout>

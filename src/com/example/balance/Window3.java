@@ -36,6 +36,7 @@ public class Window3 extends Activity implements OnClickListener {
 	private DBSQlite myDb;
 	private final String tableName = "MySQLiteTable";
 	private String key;
+	String display;
 	private String[] month = {"Янв", "Фев", "Март", "Апр", "Май", "Июнь", "Июль", "Авг"
 							, "Сент", "Окт", "Нояб", "Декаб"};
 	
@@ -68,7 +69,7 @@ public class Window3 extends Activity implements OnClickListener {
 		ContentValues cv = new ContentValues();
 		SQLiteDatabase db = myDb.getWritableDatabase();
 		String dateText = date.getText().toString();
-		String summText = summ.getText().toString();
+		String summText = display;
 		String notifyText = notify.getText().toString();
 		
 		if (v.getId() == R.id.buttonOk) {
@@ -225,7 +226,8 @@ public class Window3 extends Activity implements OnClickListener {
 		    dialog.setNegativeButton("Добавить", new DialogInterface.OnClickListener() {
 	               public void onClick(DialogInterface dialog, int id) {
 	            	   String te = (String) text.getText();
-	            	   summ.setText(te);
+	            	   display = te;
+	            	   summ.setText(te + ".00UAH");
 	            	   dialog.cancel();
 	               }
 		    });

@@ -58,15 +58,15 @@ public class ShowAll extends ListActivity {
 					AlertDialog.Builder builder = new AlertDialog.Builder(ShowAll.this);
 					LayoutInflater inflater = ShowAll.this.getLayoutInflater();
 				    builder.setView(inflater.inflate(R.layout.exit_dialog_lyaout, null));
-					builder.setMessage("Вы действительно хотите удалить заметку?");
+					builder.setTitle("Вы действительно хотите удалить заметку?");
 					builder.setCancelable(false);
-					builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+					builder.setNegativeButton("Да", new DialogInterface.OnClickListener() {
 								@Override
 								public void onClick(DialogInterface dialog, int which) {
 									db.delete(tableName, del, null);
 								}
 							});
-					builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+					builder.setPositiveButton("Нет", new DialogInterface.OnClickListener() {
 								@Override
 								public void onClick(DialogInterface dialog, int which) {
 									dialog.cancel();

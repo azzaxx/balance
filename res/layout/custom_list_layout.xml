@@ -4,8 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#38455a"
-    android:paddingTop="7dp" >
+    android:background="#ffbb33"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:paddingBottom="3dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+   		android:layout_height="match_parent"
+   		android:orientation="vertical"
+   		android:background="#211A0B">
     
     <ImageView
         android:layout_width="match_parent"
@@ -53,10 +60,6 @@
 		        android:textColor="#ffffff"
 		        android:textSize="20sp"/>
 		</LinearLayout>
-			<LinearLayout 
-		   	android:layout_width="match_parent"
-		    android:layout_height="3dp"
-		    android:background="#ff0000">
 		</LinearLayout>
 	</LinearLayout>
 </LinearLayout>
