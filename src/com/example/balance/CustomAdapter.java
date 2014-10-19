@@ -18,7 +18,7 @@ public class CustomAdapter extends SimpleAdapter {
 
 	public void setViewText(TextView v, String text) {
 		if (v.getId() == R.id.summCustomList && text != "" ) {
-			if ( text.charAt(0) == (char)43 ) {
+			if ( text.charAt(7) == (char)43 ) {
 				v.setTextColor(Color.GREEN);
 			} else {
 				v.setTextColor(Color.RED);

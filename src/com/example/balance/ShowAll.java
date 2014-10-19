@@ -18,57 +18,72 @@ import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 
 public class ShowAll extends ListActivity {
-	private final String tableName =  "MySQLiteTable";
+	private final String tableName = "MySQLiteTable";
 	private DBSQlite myDb = new DBSQlite(this, tableName, null, 1);
-	private int total = 0;
+	private int total = 0; // total это сумма всего, выводится в конце экрана.
 	private ListAdapter adapter;
 	private ArrayList<MyList> list;
 	private SQLiteDatabase db;
 	private Cursor c;
 	private int getKey;
-	
+
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+	}
+
+	@Override
+	protected void onResume() {
 		list = new ArrayList<MyList>();
-		
+
 		db = myDb.getWritableDatabase();
 		c = db.query(tableName, null, null, null, null, null, null);
-		
+
 		OnItemLongClickListener itemLongListener = new OnItemLongClickListener() {
 
 			@Override
-			public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
-				if (c.getCount() != position ) {
+			public boolean onItemLongClick(AdapterView<?> parent, View v,
+					int position, long id) {
+				if (c.getCount() != position) {
 					c.moveToFirst();
 					c.move(position);
-					
+
 					int getSumm = c.getColumnIndex("summ");
 					int getDate = c.getColumnIndex("date");
 					int getNotify = c.getColumnIndex("notify");
 					int getK = c.getColumnIndex("key");
-					
+
 					final String s = c.getString(getSumm);
 					final String d = c.getString(getDate);
 					final String n = c.getString(getNotify);
 					final String k = c.getString(getK);
-					final String del = "date = '" + d + "' AND summ = '" + s + "' AND notify = '" 
-							+ n + "' AND key= '" + k + "'";
-					
-					AlertDialog.Builder builder = new AlertDialog.Builder(ShowAll.this);
+					final String del = "date = '" + d + "' AND summ = '" + s
+							+ "' AND notify = '" + n + "' AND key= '" + k + "'";
+					// строка для удаления записи с базы данных
+
+					AlertDialog.Builder builder = new AlertDialog.Builder(
+							ShowAll.this);
 					LayoutInflater inflater = ShowAll.this.getLayoutInflater();
-				    builder.setView(inflater.inflate(R.layout.exit_dialog_lyaout, null));
+					builder.setView(inflater.inflate(
+							R.layout.exit_dialog_lyaout, null));
 					builder.setTitle("Вы действительно хотите удалить заметку?");
 					builder.setCancelable(false);
-					builder.setNegativeButton("Да", new DialogInterface.OnClickListener() {
+					builder.setNegativeButton("Да",
+							new DialogInterface.OnClickListener() {
 								@Override
-								public void onClick(DialogInterface dialog, int which) {
+								public void onClick(DialogInterface dialog,
+										int which) {
 									db.delete(tableName, del, null);
+									onResume(); // Вызывается тут для обновления
+												// списка.
 								}
 							});
-					builder.setPositiveButton("Нет", new DialogInterface.OnClickListener() {
+					builder.setPositiveButton("Нет",
+							new DialogInterface.OnClickListener() {
 								@Override
-								public void onClick(DialogInterface dialog, int which) {
+								public void onClick(DialogInterface dialog,
+										int which) {
 									dialog.cancel();
 								}
 							});
@@ -77,49 +92,52 @@ public class ShowAll extends ListActivity {
 				return true;
 			}
 		};
-		
+
 		if (c.moveToFirst()) {
 			int getDate = c.getColumnIndex("date");
 			int getSumm = c.getColumnIndex("summ");
 			int getNotify = c.getColumnIndex("notify");
 			getKey = c.getColumnIndex("key");
-			
+
 			do {
 				String a = c.getString(getSumm);
 				String b = a.substring(1);
 				int d = Integer.parseInt(b);
-				
-				if (c.getString(getSumm).charAt(0) == (char)43) {
+
+				if (c.getString(getSumm).charAt(0) == (char) 43) {
 					total += d;
 				} else {
 					total -= d;
 				}
-				
-				list.add(new MyList(c.getString(getDate), c.getString(getSumm)  + ".00UAH", c.getString(getNotify)
-						, c.getString(getKey)));
-		    } while (c.moveToNext());
-		} 
-		
-		if ( c.getCount() == 0 ) {
+
+				list.add(new MyList(c.getString(getDate), "Сумма: "
+						+ c.getString(getSumm) + ".00UAH", "Заметка: "
+						+ c.getString(getNotify), c.getString(getKey)));
+			} while (c.moveToNext());
+		}
+
+		if (c.getCount() == 0) {
 			list.add(new MyList("Записей пока не было..", null, null, null));
 		} else {
 			String totalTwo;
-			if ( total == 0 ) {
+			if (total == 0) {
 				totalTwo = String.valueOf(total) + ".00UAH";
-			} else if ( total > 0 ) {
+			} else if (total > 0) {
 				totalTwo = "+" + String.valueOf(total) + ".00UAH";
 			} else {
 				totalTwo = String.valueOf(total) + ".00UAH";
 			}
-			list.add(new MyList("Итого:", totalTwo, null, null));
+			list.add(new MyList("Баланс:", "Сумма: " + totalTwo, null, null));
 		}
-		
-		String[] from = {"date", "summ", "notify" };
-		int[] to =  { R.id.dateCustomList, R.id.summCustomList, R.id.notifyCustomList };
-		adapter = new CustomAdapter(this, list, R.layout.custom_list_layout, from, to);
-		
+
+		String[] from = { "date", "summ", "notify" };
+		int[] to = { R.id.dateCustomList, R.id.summCustomList,
+				R.id.notifyCustomList };
+		adapter = new CustomAdapter(this, list, R.layout.custom_list_layout,
+				from, to);
+
 		setListAdapter(adapter);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		getListView().setOnItemLongClickListener(itemLongListener);
+		super.onResume();
 	}
 }
