@@ -12,27 +12,29 @@
         android:contentDescription="@string/app_name"
         android:scaleType="center"
         android:src="@drawable/ic_launcher" />
-<LinearLayout
-    	android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="154dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"
-        android:textColor="#ff3737"
-        android:textSize="20sp" />
+        android:orientation="horizontal" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:text=".00UAH"
-        android:textSize="20sp"
-        android:textColor="#ff3737" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="154dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="#ff3737"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text=".00UAH"
+            android:textColor="#ff3737"
+            android:textSize="20sp" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -141,7 +143,6 @@
             android:layout_weight="1"
             android:text="Bck"
             android:textSize="15sp" />
-
     </LinearLayout>
 
 </LinearLayout>

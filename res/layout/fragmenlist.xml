@@ -1,0 +1,65 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragmentInlistView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+	
+    <LinearLayout
+        android:layout_height="75dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal" 
+        android:background="#000000"
+        android:padding="1dp">
+        
+        <LinearLayout 
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_weight="4"
+            android:background="#000000"
+            android:padding="1dp">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/avatar_11" />
+
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="#FFF000"
+            android:padding="1dp">
+			
+            <TextView 
+                android:id="@+id/name"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"/>
+            
+            <TextView 
+                android:id="@+id/nameIs"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"/>
+            
+            <TextView 
+                android:id="@+id/phoneNumber"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"/>
+            
+            <TextView 
+                android:id="@+id/phoneNumberis"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"/>
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+</LinearLayout>

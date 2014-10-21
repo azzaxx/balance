@@ -84,6 +84,7 @@ public class Window3 extends Activity implements OnClickListener {
 				cv.put("key", key);
 				db.insert(tableName, null, cv);
 			}
+			db.close();
 			finish();
 		} else if (v.getId() == R.id.buttonCancel) {
 			finish();

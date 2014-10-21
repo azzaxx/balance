@@ -31,6 +31,7 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
 	        android:layout_weight="1"
+	        android:background="#211A0B"
 	        android:orientation="vertical" >
 	
 	        <LinearLayout
@@ -80,12 +81,14 @@
 		    </LinearLayout>
 	       
 		    <EditText
+		        android:background="#211A0B"
 	            android:id="@+id/editTextNote"
 	            android:textColor="#ffffff"
 	            android:layout_width="match_parent"
 	            android:layout_height="match_parent"
 	            android:gravity="center"
 	            android:textSize="20dp" 
+	            android:hint="Введите заметку"
 	            android:layout_weight="1"/>
 	        
 	        
