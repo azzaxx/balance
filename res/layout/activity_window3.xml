@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffbb33"
-    android:paddingLeft="3dp"
-    android:paddingRight="3dp"
-    android:paddingBottom="3dp">
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    android:paddingBottom="4dp">
     <LinearLayout
         android:layout_width="match_parent"
    		android:layout_height="match_parent"
@@ -16,7 +16,7 @@
     
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="48dp"
         android:background="#FFBB33"
         android:scaleType="center"
         android:src="@drawable/ic_launcher" />
@@ -24,14 +24,13 @@
 	<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="4dp"
+        android:background="#ffbb33"
         android:orientation="vertical" >
 	    
 	    <LinearLayout
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
 	        android:layout_weight="1"
-	        android:background="#211A0B"
 	        android:orientation="vertical" >
 	
 	        <LinearLayout
@@ -44,30 +43,32 @@
 			        android:layout_width="match_parent"
 			        android:layout_height="match_parent"
 			        android:layout_weight="1"
+			        android:background="#000000"
 			        android:orientation="vertical" >
 			        
 			        <TextView
 			            android:id="@+id/editTextDate"
 			            android:layout_width="match_parent"
-			            android:layout_height="75dp"
+			            android:layout_height="match_parent"
 			            android:gravity="center"
 			            android:textColor="#ff3737"
 			            android:hint="Введите дату"
-			            android:textSize="20dp" />
+			            android:textSize="16dp" />
 		    	</LinearLayout>
 		    </LinearLayout>
 		    
 		    <LinearLayout
 		        android:layout_width="match_parent"
 		        android:layout_height="58dp"
-		        android:orientation="vertical"
-		        android:paddingBottom="4dp" >
+		        android:background="#000000"
+		        android:orientation="vertical">
 
 		        <LinearLayout
 			        android:layout_width="match_parent"
 			        android:layout_height="match_parent"
 			        android:layout_weight="1"
 			        android:orientation="vertical" >
+			        
 			        <TextView
 			            android:id="@+id/editTextSumm"
 			            android:textColor="#ff3737"
@@ -76,45 +77,36 @@
 			            android:gravity="center"
 			            android:hint="Введите сумму"
 			            android:inputType="number"
-			            android:textSize="20dp" />
+			            android:textSize="16dp"/>
 	        	</LinearLayout>
 		    </LinearLayout>
 	       
 		    <EditText
-		        android:background="#211A0B"
+		        android:layout_marginTop="4dp"
+		        android:layout_marginBottom="4dp"
 	            android:id="@+id/editTextNote"
+	            android:background="#000000"
 	            android:textColor="#ffffff"
 	            android:layout_width="match_parent"
 	            android:layout_height="match_parent"
 	            android:gravity="center"
-	            android:textSize="20dp" 
 	            android:hint="Введите заметку"
+	            android:textSize="16dp"
 	            android:layout_weight="1"/>
-	        
 	        
 	        <LinearLayout
 	            android:layout_width="match_parent"
 	            android:layout_height="72dp"
+	            android:gravity="center"
+	            android:background="#000000"
 	            android:orientation="horizontal" >
 	            
 	            <Button
 	                android:id="@+id/buttonOk"
 	                android:text="Подтвердить"
 	                android:layout_width="match_parent"
-		            android:layout_height="match_parent"
-		            android:layout_marginRight="4dp"
-		            android:layout_weight="1"
-		            android:background="@drawable/linear_selector"
-		            android:shadowColor="#8f9db5"
-		            android:shadowDx="5"
-		            android:shadowDy="9"
-		            android:shadowRadius="10.1"
-		            android:textColor="#ffffff"/>
-	            
-	            <Button
-	                android:id="@+id/buttonCancel" 
-	                android:layout_width="match_parent"
-		            android:layout_height="match_parent"
+		            android:layout_height="48dp"
+		            android:layout_marginRight="2dp"
 		            android:layout_marginLeft="4dp"
 		            android:layout_weight="1"
 		            android:background="@drawable/linear_selector"
@@ -122,7 +114,23 @@
 		            android:shadowDx="5"
 		            android:shadowDy="9"
 		            android:shadowRadius="10.1"
+		            android:textSize="16dp"
+		            android:textColor="#ffffff"/>
+	            
+	            <Button
+	                android:id="@+id/buttonCancel" 
+	                android:layout_width="match_parent"
+		            android:layout_height="48dp"
+		            android:layout_marginRight="4dp"
+		            android:layout_marginLeft="2dp"
+		            android:layout_weight="1"
+		            android:background="@drawable/linear_selector"
+		            android:shadowColor="#8f9db5"
+		            android:shadowDx="5"
+		            android:shadowDy="9"
+		            android:shadowRadius="10.1"
 		            android:textColor="#ffffff"
+		            android:textSize="16dp"
 	                android:text="Отменить"/>
 	            
 	        </LinearLayout>

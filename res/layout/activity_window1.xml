@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffbb33"
-    android:paddingLeft="3dp"
-    android:paddingRight="3dp"
-    android:paddingBottom="3dp">
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    android:paddingBottom="4dp">
     <LinearLayout
         android:layout_width="match_parent"
    		android:layout_height="match_parent"
@@ -15,16 +15,16 @@
    		android:background="#211A0B">
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="48dp"
         android:background="#FFBB33"
         android:scaleType="center"
         android:src="@drawable/ic_launcher" />
     
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="94dp"
+        android:layout_height="96dp"
         android:textColor="#ff3737"
-        android:textSize="60dp"
+        android:textSize="48sp"
         android:gravity="center"
         android:text="BALANCE" />
     
@@ -32,49 +32,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="40dp">
+        android:padding="40dp"
+        android:gravity="bottom">
         
         <Button
             android:background="@drawable/linear_selector"
             android:id="@+id/button1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="48dp"
             android:layout_marginBottom="4dp"
-            android:layout_weight="1"
-
             android:shadowColor="#8f9db5"
             android:shadowDx="5"
             android:shadowDy="9"
             android:shadowRadius="10.1"
             android:textColor="#ffffff"
-            android:text="Править баланс"/>
+            android:text="Править баланс"
+            android:textSize="16dp"
+            android:layout_gravity="bottom"/>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="48dp"
             android:layout_marginBottom="4dp"
-            android:layout_weight="1"
             android:background="@drawable/linear_selector"
             android:shadowColor="#8f9db5"
             android:shadowDx="5"
             android:shadowDy="9"
             android:shadowRadius="10.1"
             android:text="Показать баланс"
-            android:textColor="#ffffff" />
+            android:textSize="16dp"
+            android:textColor="#ffffff"
+            android:layout_gravity="bottom" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="48dp"
             android:background="@drawable/linear_selector"
             android:shadowColor="#8f9db5"
             android:shadowDx="5"
             android:shadowDy="9"
             android:shadowRadius="10.1"
             android:text="ВЫХОД"
-            android:textColor="#ffffff" />
+            android:textSize="16dp"
+            android:textColor="#ffffff"
+            android:layout_gravity="bottom" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

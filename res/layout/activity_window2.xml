@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffbb33"
-    android:paddingLeft="3dp"
-    android:paddingRight="3dp"
-    android:paddingBottom="3dp">
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    android:paddingBottom="4dp">
     <LinearLayout
         android:layout_width="match_parent"
    		android:layout_height="match_parent"
@@ -16,14 +16,14 @@
     
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="48dp"
         android:background="#FFBB33"
         android:scaleType="center"
         android:src="@drawable/ic_launcher" />
     
 	    <LinearLayout
 	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
+	        android:layout_height="48dp"
 	        android:layout_weight="1"
 	        android:orientation="horizontal"
 	        android:padding="30dp" >
@@ -40,6 +40,7 @@
 	            android:shadowDx="5"
 	            android:shadowDy="9"
 	            android:shadowRadius="10.1"
+	            android:textSize="16dp"
 	            android:textColor="#ffffff"/>
 	        
 	        <Button 
@@ -54,6 +55,7 @@
 	            android:shadowDx="5"
 	            android:shadowDy="9"
 	            android:shadowRadius="10.1"
+	            android:textSize="16dp"
 	            android:textColor="#ffffff"/>
 	        
 	    </LinearLayout>
@@ -68,8 +70,9 @@
 	            android:id="@+id/clearButtonInWindow2"
 	            android:text="Обнулить базу"
 	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
+	            android:layout_height="48dp"
 	            android:layout_marginBottom="4dp"
+	            android:textSize="16dp"
 	            android:layout_weight="1"
 	            android:background="@drawable/linear_selector"
 	            android:shadowColor="#8f9db5"
@@ -82,8 +85,9 @@
 	            android:id="@+id/backInWindow2"
 	            android:text="Назад"
 	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
+	            android:layout_height="48dp"
 	            android:layout_marginBottom="4dp"
+	            android:textSize="16dp"
 	            android:layout_weight="1"
 	            android:background="@drawable/linear_selector"
 	            android:shadowColor="#8f9db5"
