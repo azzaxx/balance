@@ -10,12 +10,15 @@ import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 
 public class ShowAll extends ListActivity {
 	private final String tableName = "MySQLiteTable";
@@ -29,7 +32,8 @@ public class ShowAll extends ListActivity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.custom_list_layout);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
@@ -133,7 +137,7 @@ public class ShowAll extends ListActivity {
 		String[] from = { "date", "summ", "notify" };
 		int[] to = { R.id.dateCustomList, R.id.summCustomList,
 				R.id.notifyCustomList };
-		adapter = new CustomAdapter(this, list, R.layout.custom_list_layout,
+		adapter = new CustomAdapter(this, list, R.layout.custom_list_veiw,
 				from, to);
 
 		setListAdapter(adapter);
