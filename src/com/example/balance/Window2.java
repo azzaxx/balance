@@ -1,5 +1,6 @@
 package com.example.balance;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,7 +14,7 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class Window2 extends ActionBarActivity implements OnClickListener {
+public class Window2 extends Activity implements OnClickListener {
 	private Button back;
 	private Button dohod;
 	private Button rashod;

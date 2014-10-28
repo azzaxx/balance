@@ -115,7 +115,7 @@ public class Window3 extends Activity implements OnClickListener {
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("1");
-					} else if (text.getText().length() < 12) {
+					} else if (text.getText().length() < 9) {
 						String te = (String) text.getText();
 						text.setText(te + "1");
 					}
@@ -126,7 +126,7 @@ public class Window3 extends Activity implements OnClickListener {
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("2");
-					} else if (text.getText().length() < 12) {
+					} else if (text.getText().length() < 9) {
 						String te = (String) text.getText();
 						text.setText(te + "2");
 					}
@@ -136,7 +136,7 @@ public class Window3 extends Activity implements OnClickListener {
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("3");
-					} else if (text.getText().length() < 12) {
+					} else if (text.getText().length() < 9) {
 						String te = (String) text.getText();
 						text.setText(te + "3");
 					}
@@ -146,7 +146,7 @@ public class Window3 extends Activity implements OnClickListener {
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("4");
-					} else if (text.getText().length() < 12) {
+					} else if (text.getText().length() < 9) {
 						String te = (String) text.getText();
 						text.setText(te + "4");
 					}
@@ -156,7 +156,7 @@ public class Window3 extends Activity implements OnClickListener {
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("5");
-					} else if (text.getText().length() < 12) {
+					} else if (text.getText().length() < 9) {
 						String te = (String) text.getText();
 						text.setText(te + "5");
 					}
@@ -166,7 +166,7 @@ public class Window3 extends Activity implements OnClickListener {
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("6");
-					} else if (text.getText().length() < 12) {
+					} else if (text.getText().length() < 9) {
 						String te = (String) text.getText();
 						text.setText(te + "6");
 					}
@@ -176,7 +176,7 @@ public class Window3 extends Activity implements OnClickListener {
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("7");
-					} else if (text.getText().length() < 12) {
+					} else if (text.getText().length() < 9) {
 						String te = (String) text.getText();
 						text.setText(te + "7");
 					}
@@ -186,7 +186,7 @@ public class Window3 extends Activity implements OnClickListener {
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("8");
-					} else if (text.getText().length() < 12) {
+					} else if (text.getText().length() < 9) {
 						String te = (String) text.getText();
 						text.setText(te + "8");
 					}
@@ -196,7 +196,7 @@ public class Window3 extends Activity implements OnClickListener {
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("9");
-					} else if (text.getText().length() < 12) {
+					} else if (text.getText().length() < 9) {
 						String te = (String) text.getText();
 						text.setText(te + "9");
 					}
@@ -206,7 +206,7 @@ public class Window3 extends Activity implements OnClickListener {
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("0");
-					} else if (text.getText().length() < 12) {
+					} else if (text.getText().length() < 9) {
 						String te = (String) text.getText();
 						text.setText(te + "0");
 					}
