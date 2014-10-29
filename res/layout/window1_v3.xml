@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="89dp"
+            android:layout_height="match_parent"
+            android:background="#ff0000"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/Junaury"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#1c0772"
+                android:gravity="center"
+                android:text="January"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/February"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#3415b0"
+                android:gravity="center"
+                android:text="February"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/March"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#008500"
+                android:gravity="center"
+                android:text="March"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/April"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00cc00"
+                android:gravity="center"
+                android:text="April"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/May"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#269926"
+                android:gravity="center"
+                android:text=" May"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/June"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#ffcf00"
+                android:gravity="center"
+                android:text="June"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/July"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#bfa430"
+                android:gravity="center"
+                android:text=" July"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/August"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#a68700"
+                android:gravity="center"
+                android:text="August"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/September"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#ff0000"
+                android:gravity="center"
+                android:text="September"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/October"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#bf3030"
+                android:gravity="center"
+                android:text="October"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/November"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#a60000"
+                android:gravity="center"
+                android:text="November"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/December"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#6549d7"
+                android:gravity="center"
+                android:text="December"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#73bf43"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#ffffff"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textViewBalanceInShowAll"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:text="BALANCE"
+                    android:textSize="22dp"
+                    android:textColor="#ec6118" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@android:id/list"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="432dp">
+            </ListView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/profit"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_weight="1" 
+                    android:text="Profit"/>
+
+                <Button
+                    android:id="@+id/lose"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_weight="1" 
+                    android:text="Lose"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

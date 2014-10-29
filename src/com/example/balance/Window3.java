@@ -37,11 +37,11 @@ public class Window3 extends Activity implements OnClickListener {
 	private int myMonth = cal.get(Calendar.MONTH);
 	private int myDay = cal.get(Calendar.DAY_OF_MONTH);
 	private DBSQlite myDb;
-	private final String tableName = "MySQLiteTable";
+	private final String tableName = "Sagayda4niyAlexeySQLiteTable";
 	private String key;
 	private String addUAH = "";
-	private String[] month = { "Янв", "Фев", "Март", "Апр", "Май", "Июнь",
-			"Июль", "Авг", "Сент", "Окт", "Нояб", "Декаб" };
+	private String[] month = { "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня",
+			"Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря" };
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,8 +57,7 @@ public class Window3 extends Activity implements OnClickListener {
 		date.setOnClickListener(this);
 		summ.setOnClickListener(this);
 
-		date.setText("Добавленно: " + myDay + "." + month[myMonth] + "."
-				+ myYear + "г.");
+		date.setText( myDay + " " + month[myMonth] + " " + myYear + "г.");
 		summ.setText("Введите сумму");
 
 		myDb = new DBSQlite(this, tableName, null, 1);
@@ -82,6 +81,8 @@ public class Window3 extends Activity implements OnClickListener {
 				cv.put("summ", key + summText);
 				cv.put("notify", notifyText);
 				cv.put("key", key);
+				cv.put("month", month[myMonth]);
+				cv.put("year", myYear);
 				db.insert(tableName, null, cv);
 			}
 			db.close();
@@ -260,8 +261,9 @@ public class Window3 extends Activity implements OnClickListener {
 	OnDateSetListener myCallBack = new OnDateSetListener() {
 		public void onDateSet(DatePicker view, int year, int monthOfYear,
 				int dayOfMonth) {
-			date.setText("Добавленно: " + dayOfMonth + "." + month[monthOfYear]
-					+ "." + year + "г.");
+			date.setText(dayOfMonth + " " + month[monthOfYear] + " " + year + "г.");
+			myMonth = monthOfYear;
+			myYear = year;
 		}
 	};
 }

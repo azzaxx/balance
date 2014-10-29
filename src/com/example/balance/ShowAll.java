@@ -122,12 +122,12 @@ public class ShowAll extends ListActivity {
 
 				list.add(new MyList(c.getString(getDate), "Сумма: "
 						+ c.getString(getSumm) + ".00UAH", "Заметка: "
-						+ c.getString(getNotify), c.getString(getKey)));
+						+ c.getString(getNotify), c.getString(getKey), null, null, null));
 			} while (c.moveToNext());
 		}
 
 		if (c.getCount() == 0) {
-			list.add(new MyList("Записей пока не было..", null, null, null));
+			list.add(new MyList("Записей пока не было..", null, null, null, null, null, null));
 			balance.setText("Баланс: 0.00UAH");
 			balance.setTextColor(Color.RED);
 		} else {
