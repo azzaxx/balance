@@ -16,7 +16,7 @@ public class DBSQlite extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL("CREATE table Sagayda4niyAlexeySQLiteTable ("
-		          + "id integer primary key autoincrement," 
+		          + "id integer primary key autoincrement unique," 
 		          + "date text,"
 		          + "summ text,"
 		          + "notify text,"

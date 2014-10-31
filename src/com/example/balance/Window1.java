@@ -43,7 +43,8 @@ public class Window1 extends ListActivity {
 	private long monthCount[] = new long[12];
 	private Button profit;
 	private Button lose;
-	private Intent intent, intent2;
+	private Intent intent;
+	private String keyWord = "balance";
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,7 +54,6 @@ public class Window1 extends ListActivity {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		intent = new Intent(this, Window3.class);
-		intent2 = new Intent(this, Window2.class);
 		profit = (Button) findViewById(R.id.profit);
 		lose = (Button) findViewById(R.id.lose);
 		balance = (TextView) findViewById(R.id.textViewBalanceInShowAll);
@@ -76,8 +76,104 @@ public class Window1 extends ListActivity {
 
 			@Override
 			public void onClick(View v) {
-				startActivity(intent2);
+				keyWord = "balance";
+				onResume();
+			}
+		});
+		jun.setOnClickListener(new OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+				keyWord = month[0];
+				onResume();
+			}
+		});
+		feb.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				keyWord = month[1];
+				onResume();
+			}
+		});
+		mar.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				keyWord = month[2];
+				onResume();
+			}
+		});
+		apr.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				keyWord = month[3];
+				onResume();
+			}
+		});
+		may.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				keyWord = month[4];
+				onResume();
+			}
+		});
+		june.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				keyWord = month[5];
+				onResume();
+			}
+		});
+		july.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				keyWord = month[6];
+				onResume();
+			}
+		});
+		aug.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				keyWord = month[7];
+				onResume();
+			}
+		});
+		sep.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				keyWord = month[8];
+				onResume();
+			}
+		});
+		oct.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				keyWord = month[9];
+				onResume();
+			}
+		});
+		nov.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				keyWord = month[10];
+				onResume();
+			}
+		});
+		dec.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				keyWord = month[11];
+				onResume();
 			}
 		});
 		profit.setOnClickListener(new OnClickListener() {
@@ -85,6 +181,7 @@ public class Window1 extends ListActivity {
 			@Override
 			public void onClick(View v) {
 				String message = "+";
+				keyWord = "balance";
 				intent.putExtra(INTENT_EXTRA_MESSAGE, message);
 				startActivity(intent);
 			}
@@ -94,6 +191,7 @@ public class Window1 extends ListActivity {
 			@Override
 			public void onClick(View v) {
 				String message = "-";
+				keyWord = "balance";
 				intent.putExtra(INTENT_EXTRA_MESSAGE, message);
 				startActivity(intent);
 			}
@@ -116,13 +214,26 @@ public class Window1 extends ListActivity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View v,
 					int position, long id) {
-				if (c.getCount() != position) {
+				if (c.getCount() != position && keyWord == "balance" ) {
 					c.moveToFirst();
 					c.move(position);
 
 					int getId = c.getColumnIndex("id");
 					final String i = c.getString(getId);
-					final String del = "id = " + i;
+					// final String del = "id = " + i;
+
+					int getSumm = c.getColumnIndex("summ");
+					int getDate = c.getColumnIndex("date");
+					int getNotify = c.getColumnIndex("notify");
+					int getK = c.getColumnIndex("key");
+					final String s = c.getString(getSumm);
+					final String d = c.getString(getDate);
+					final String n = c.getString(getNotify);
+					final String k = c.getString(getK);
+
+					final String del = "date = '" + d + "' AND summ = '" + s
+							+ "' AND notify = '" + n + "' AND key= '" + k + "'"
+							+ " AND id = " + i;
 					AlertDialog.Builder builder = new AlertDialog.Builder(
 							Window1.this);
 					LayoutInflater inflater = Window1.this.getLayoutInflater();
@@ -169,19 +280,26 @@ public class Window1 extends ListActivity {
 				String month = c.getString(getMonth);
 
 				Count(d, month, c.getString(getKey));
-				Log.d("MyLog", "summ is: ------ " + d + " Month is: -----"
-						+ month);
+
 				if (c.getString(getSumm).charAt(0) == (char) 43) {
 					total += d;
 				} else {
 					total -= d;
 				}
 
-				list.add(new MyList(c.getString(getDate), "Сумма: "
-						+ c.getString(getSumm) + ".00UAH", "Заметка: "
-						+ c.getString(getNotify) + c.getString(getMonth)
-						+ c.getString(getYear), c.getString(getKey), null,
-						null, null));
+				if (keyWord.equals("balance")) {
+					list.add(new MyList(c.getString(getDate), "Сумма: "
+							+ c.getString(getSumm) + ".00UAH", "Заметка: "
+							+ c.getString(getNotify) + c.getString(getMonth)
+							+ c.getString(getYear), c.getString(getKey), null,
+							null, null));
+				} else if (keyWord.equals(month)) {
+					list.add(new MyList(c.getString(getDate), "Сумма: "
+							+ c.getString(getSumm) + ".00UAH", "Заметка: "
+							+ c.getString(getNotify) + c.getString(getMonth)
+							+ c.getString(getYear), c.getString(getKey), null,
+							null, null));
+				}
 			} while (c.moveToNext());
 		}
 
@@ -216,32 +334,73 @@ public class Window1 extends ListActivity {
 		setListAdapter(adapter);
 		getListView().setOnItemLongClickListener(itemLongListener);
 
-		if (monthCount[0] != 0)
-			jun.setText("Junaury " + monthCount[0] + ".00UAH");
-		if (monthCount[1] != 0)
-			feb.setText("February " + monthCount[1] + ".00UAH");
-		if (monthCount[2] != 0)
-			mar.setText("March " + monthCount[2] + ".00UAH");
-		if (monthCount[3] != 0)
-			apr.setText("April " + monthCount[3] + ".00UAH");
-		if (monthCount[4] != 0)
-			may.setText("May " + monthCount[4] + ".00UAH");
-		if (monthCount[5] != 0)
-			june.setText("June " + monthCount[5] + ".00UAH");
-		if (monthCount[6] != 0)
-			july.setText("July " + monthCount[6] + ".00UAH");
-		if (monthCount[7] != 0)
-			aug.setText("August " + monthCount[7] + ".00UAH");
-		if (monthCount[8] != 0)
-			sep.setText("September " + monthCount[8] + ".00UAH");
-		if (monthCount[9] != 0)
-			oct.setText("October " + monthCount[9] + ".00UAH");
-		if (monthCount[10] != 0)
-			nov.setText("March " + monthCount[10] + ".00UAH");
-		if (monthCount[11] != 0)
-			dec.setText("November " + monthCount[11] + ".00UAH");
+		setText();
 
 		super.onResume();
+	}
+
+	private void setText() {
+		if (monthCount[0] != 0) {
+			jun.setText("Junaury " + monthCount[0] + ".00UAH");
+		} else {
+			jun.setText("Junaury");
+		}
+		if (monthCount[1] != 0) {
+			feb.setText("February " + monthCount[1] + ".00UAH");
+		} else {
+			feb.setText("February");
+		}
+		if (monthCount[2] != 0) {
+			mar.setText("March " + monthCount[2] + ".00UAH");
+		} else {
+			mar.setText("March");
+		}
+		if (monthCount[3] != 0) {
+			apr.setText("April " + monthCount[3] + ".00UAH");
+		} else {
+			apr.setText("April");
+		}
+		if (monthCount[4] != 0) {
+			may.setText("May " + monthCount[4] + ".00UAH");
+		} else {
+			may.setText("May");
+		}
+		if (monthCount[5] != 0) {
+			june.setText("June " + monthCount[5] + ".00UAH");
+		} else {
+			june.setText("June");
+		}
+		if (monthCount[6] != 0) {
+			july.setText("July " + monthCount[6] + ".00UAH");
+		} else {
+			july.setText("July");
+		}
+		if (monthCount[7] != 0) {
+			aug.setText("August " + monthCount[7] + ".00UAH");
+		} else {
+			aug.setText("August");
+		}
+		if (monthCount[8] != 0) {
+			sep.setText("September " + monthCount[8] + ".00UAH");
+		} else {
+			sep.setText("September");
+		}
+		if (monthCount[9] != 0) {
+			oct.setText("October " + monthCount[9] + ".00UAH");
+		} else {
+			oct.setText("October");
+		}
+		if (monthCount[10] != 0) {
+			nov.setText("November " + monthCount[10] + ".00UAH");
+		} else {
+			nov.setText("November");
+		}
+		if (monthCount[11] != 0) {
+			dec.setText("December " + monthCount[11] + ".00UAH");
+		} else {
+			dec.setText("December");
+		}
+
 	}
 
 	private void Count(int d, String month1, String key) {
