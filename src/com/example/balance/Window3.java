@@ -13,17 +13,14 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Window3 extends Activity implements OnClickListener {
 	private Calendar cal = Calendar.getInstance();
@@ -32,6 +29,8 @@ public class Window3 extends Activity implements OnClickListener {
 	private EditText notify;
 	private Button ok;
 	private Button cancel;
+	private CheckBox food, road, home, vacation, shop, medecine, car, family,
+			pets, gifts, poker, other;
 	private int DIALOG_DATE = 1;
 	private int myYear = cal.get(Calendar.YEAR);
 	private int myMonth = cal.get(Calendar.MONTH);
@@ -40,13 +39,28 @@ public class Window3 extends Activity implements OnClickListener {
 	private final String tableName = "Sagayda4niyAlexeySQLiteTable";
 	private String key;
 	private String addUAH = "";
-	private String[] month = { "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня",
-			"Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря" };
+	private String[] month = { "Junaury", "February", "March", "April", "May",
+			"June", "July", "August", "September", "October", "November",
+			"December" };
+	private String[] category = {"Food", "Road", "Home", "Vacation", "Shop",
+			"Medecine", "Car", "Family", "Pets", "Gifts", "Poker", "Other"};
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_window3);
-
+		setContentView(R.layout.window3_v2);
+		
+		food = (CheckBox) findViewById(R.id.foodCheckBox);
+		road = (CheckBox) findViewById(R.id.roadCheckBox);
+		home = (CheckBox) findViewById(R.id.homeCheckBox);
+		vacation = (CheckBox) findViewById(R.id.vacationCheckBox);
+		shop = (CheckBox) findViewById(R.id.shopCheckBox);
+		medecine = (CheckBox) findViewById(R.id.medecineCheckBox);
+		car = (CheckBox) findViewById(R.id.carCheckBox);
+		family = (CheckBox) findViewById(R.id.familyCheckBox);
+		pets = (CheckBox) findViewById(R.id.petsCheckBox);
+		gifts = (CheckBox) findViewById(R.id.giftsCheckBox);
+		poker = (CheckBox) findViewById(R.id.pokerCheckBox);
+		other = (CheckBox) findViewById(R.id.otherCheckBox);
 		date = (TextView) findViewById(R.id.editTextDate);
 		summ = (TextView) findViewById(R.id.editTextSumm);
 		notify = (EditText) findViewById(R.id.editTextNote);
@@ -57,8 +71,8 @@ public class Window3 extends Activity implements OnClickListener {
 		date.setOnClickListener(this);
 		summ.setOnClickListener(this);
 
-		date.setText( myDay + " " + month[myMonth] + " " + myYear + "г.");
-		summ.setText("Введите сумму");
+		date.setText(myDay + " " + month[myMonth] + " " + myYear);
+		summ.setText("Add sum");
 
 		myDb = new DBSQlite(this, tableName, null, 1);
 		Intent intent = getIntent();
@@ -229,7 +243,7 @@ public class Window3 extends Activity implements OnClickListener {
 					}
 				}
 			});
-			dialog.setNegativeButton("Добавить",
+			dialog.setNegativeButton("Add",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							String te = (String) text.getText();
@@ -238,7 +252,7 @@ public class Window3 extends Activity implements OnClickListener {
 							dialog.cancel();
 						}
 					});
-			dialog.setPositiveButton("Отменить",
+			dialog.setPositiveButton("Cancel",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							dialog.cancel();
@@ -261,7 +275,7 @@ public class Window3 extends Activity implements OnClickListener {
 	OnDateSetListener myCallBack = new OnDateSetListener() {
 		public void onDateSet(DatePicker view, int year, int monthOfYear,
 				int dayOfMonth) {
-			date.setText(dayOfMonth + " " + month[monthOfYear] + " " + year + "г.");
+			date.setText(dayOfMonth + " " + month[monthOfYear] + " " + year);
 			myMonth = monthOfYear;
 			myYear = year;
 		}

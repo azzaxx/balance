@@ -3,7 +3,7 @@
     android:id="@+id/test"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#73bf43"
+    android:background="#e4e3ad"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -20,7 +20,7 @@
                 android:id="@+id/dateCustomList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="#ffffff"
+                android:textColor="#3e484a"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -43,7 +43,7 @@
                 android:id="@+id/notifyCustomList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="#ffffff"
+                android:textColor="#3e484a"
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>

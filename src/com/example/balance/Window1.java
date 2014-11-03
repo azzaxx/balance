@@ -13,17 +13,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemLongClickListener;
 
 public class Window1 extends ListActivity {
 	protected static final String INTENT_EXTRA_MESSAGE = "Sagayda4niyAlexeyIntentMESSAGE";
@@ -37,18 +34,18 @@ public class Window1 extends ListActivity {
 	private int getKey;
 	private TextView balance, jun, feb, mar, apr, may, june, july, aug, sep,
 			oct, nov, dec;
-	private String[] month = { "Января", "Февраля", "Марта", "Апреля", "Мая",
-			"Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября",
-			"Декабря" };
+	private String[] month = { "Junaury", "February", "March", "April", "May",
+			"June", "July", "August", "September", "October", "November",
+			"December" };
 	private long monthCount[] = new long[12];
 	private Button profit;
 	private Button lose;
 	private Intent intent;
-	private String keyWord = "balance";
+	private String keyWord = "BALANCE";
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		// this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		// setContentView(R.layout.window1_v2);
 		setContentView(R.layout.window1_v3);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -72,11 +69,12 @@ public class Window1 extends ListActivity {
 
 		// SQLiteDatabase db = myDb.getWritableDatabase();
 		// db.delete("Sagayda4niyAlexeySQLiteTable", null, null);
+		
 		balance.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				keyWord = "balance";
+				keyWord = "BALANCE";
 				onResume();
 			}
 		});
@@ -181,7 +179,7 @@ public class Window1 extends ListActivity {
 			@Override
 			public void onClick(View v) {
 				String message = "+";
-				keyWord = "balance";
+				keyWord = "BALANCE";
 				intent.putExtra(INTENT_EXTRA_MESSAGE, message);
 				startActivity(intent);
 			}
@@ -191,7 +189,7 @@ public class Window1 extends ListActivity {
 			@Override
 			public void onClick(View v) {
 				String message = "-";
-				keyWord = "balance";
+				keyWord = "BALANCE";
 				intent.putExtra(INTENT_EXTRA_MESSAGE, message);
 				startActivity(intent);
 			}
@@ -214,7 +212,7 @@ public class Window1 extends ListActivity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View v,
 					int position, long id) {
-				if (c.getCount() != position && keyWord == "balance" ) {
+				if (c.getCount() != position && keyWord == "BALANCE") {
 					c.moveToFirst();
 					c.move(position);
 
@@ -239,9 +237,9 @@ public class Window1 extends ListActivity {
 					LayoutInflater inflater = Window1.this.getLayoutInflater();
 					builder.setView(inflater.inflate(
 							R.layout.exit_dialog_lyaout, null));
-					builder.setTitle("Вы действительно хотите удалить заметку?");
+					builder.setTitle("Delete note?");
 					builder.setCancelable(false);
-					builder.setNegativeButton("Да",
+					builder.setNegativeButton("Yes",
 							new DialogInterface.OnClickListener() {
 								@Override
 								public void onClick(DialogInterface dialog,
@@ -251,7 +249,7 @@ public class Window1 extends ListActivity {
 												// списка.
 								}
 							});
-					builder.setPositiveButton("Нет",
+					builder.setPositiveButton("No",
 							new DialogInterface.OnClickListener() {
 								@Override
 								public void onClick(DialogInterface dialog,
@@ -281,33 +279,37 @@ public class Window1 extends ListActivity {
 
 				Count(d, month, c.getString(getKey));
 
-				if (c.getString(getSumm).charAt(0) == (char) 43) {
-					total += d;
-				} else {
-					total -= d;
-				}
-
-				if (keyWord.equals("balance")) {
-					list.add(new MyList(c.getString(getDate), "Сумма: "
-							+ c.getString(getSumm) + ".00UAH", "Заметка: "
+				if (keyWord.equals("BALANCE")) {
+					list.add(new MyList(c.getString(getDate), "Sum: "
+							+ c.getString(getSumm) + ".00UAH", "Note: "
 							+ c.getString(getNotify) + c.getString(getMonth)
 							+ c.getString(getYear), c.getString(getKey), null,
 							null, null));
+					if (c.getString(getSumm).charAt(0) == (char) 43) {
+						total += d;
+					} else {
+						total -= d;
+					}
 				} else if (keyWord.equals(month)) {
-					list.add(new MyList(c.getString(getDate), "Сумма: "
-							+ c.getString(getSumm) + ".00UAH", "Заметка: "
+					list.add(new MyList(c.getString(getDate), "Sum: "
+							+ c.getString(getSumm) + ".00UAH", "Note: "
 							+ c.getString(getNotify) + c.getString(getMonth)
 							+ c.getString(getYear), c.getString(getKey), null,
 							null, null));
+					if (c.getString(getSumm).charAt(0) == (char) 43) {
+						total += d;
+					} else {
+						total -= d;
+					}
 				}
 			} while (c.moveToNext());
 		}
 
 		if (c.getCount() == 0) {
-			list.add(new MyList("Записей пока не было..", null, null, null,
+			list.add(new MyList("No note yet..", null, null, null,
 					null, null, null));
 			balance.setText("BALANCE: 0.00UAH");
-			balance.setTextColor(Color.RED);
+			balance.setTextColor(Color.parseColor("#23AD41"));
 		} else {
 			String totalTwo;
 			if (total == 0) {
@@ -317,9 +319,9 @@ public class Window1 extends ListActivity {
 			} else {
 				totalTwo = String.valueOf(total) + ".00UAH";
 			}
-			balance.setText("BALANCE: " + totalTwo);
+			balance.setText(keyWord + ": " + totalTwo);
 			if (total > 0) {
-				balance.setTextColor(Color.GREEN);
+				balance.setTextColor(Color.parseColor("#23AD41"));
 			} else {
 				balance.setTextColor(Color.RED);
 			}
@@ -420,14 +422,14 @@ public class Window1 extends ListActivity {
 		AlertDialog.Builder builder = new AlertDialog.Builder(Window1.this);
 		LayoutInflater inflater = Window1.this.getLayoutInflater();
 		builder.setView(inflater.inflate(R.layout.exit_dialog_lyaout, null))
-				.setTitle("Вы действительно хотите выйти?")
-				.setPositiveButton("Нет",
+				.setTitle("Exit Balance?")
+				.setPositiveButton("No",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								dialog.cancel();
 							}
 						})
-				.setNegativeButton("Да", new DialogInterface.OnClickListener() {
+				.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						finish();
 					}
