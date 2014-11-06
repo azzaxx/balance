@@ -1,8 +1,8 @@
 package com.example.balance;
 
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -12,14 +12,24 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.CompoundButton;
 import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class Window1 extends ListActivity {
@@ -43,10 +53,9 @@ public class Window1 extends ListActivity {
 	private Intent intent;
 	private String keyWord = "BALANCE";
 
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		// setContentView(R.layout.window1_v2);
 		setContentView(R.layout.window1_v3);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -66,10 +75,9 @@ public class Window1 extends ListActivity {
 		oct = (TextView) findViewById(R.id.October);
 		nov = (TextView) findViewById(R.id.November);
 		dec = (TextView) findViewById(R.id.December);
-
 		// SQLiteDatabase db = myDb.getWritableDatabase();
 		// db.delete("Sagayda4niyAlexeySQLiteTable", null, null);
-		
+
 		balance.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -194,6 +202,24 @@ public class Window1 extends ListActivity {
 				startActivity(intent);
 			}
 		});
+
+		getListView().setOnScrollListener(new AbsListView.OnScrollListener() {
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+			}
+
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
+				if (firstVisibleItem + visibleItemCount >= totalItemCount) {
+					getListView().setTranscriptMode(
+							AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+				} else {
+					getListView().setTranscriptMode(
+							AbsListView.TRANSCRIPT_MODE_NORMAL);
+				}
+			}
+		});
 	}
 
 	@Override
@@ -205,11 +231,12 @@ public class Window1 extends ListActivity {
 		list = new ArrayList<MyList>();
 
 		db = myDb.getWritableDatabase();
-		c = db.query(tableName, null, null, null, null, null, null);
+		c = db.query(tableName, null, null, null, null, null, " ID DESC ");
 
 		OnItemLongClickListener itemLongListener = new OnItemLongClickListener() {
 
 			@Override
+			// Удаление обьекта
 			public boolean onItemLongClick(AdapterView<?> parent, View v,
 					int position, long id) {
 				if (c.getCount() != position && keyWord == "BALANCE") {
@@ -262,13 +289,14 @@ public class Window1 extends ListActivity {
 				return true;
 			}
 		};
-
+		// Построение списка
 		if (c.moveToFirst()) {
 			int getDate = c.getColumnIndex("date");
 			int getSumm = c.getColumnIndex("summ");
 			int getNotify = c.getColumnIndex("notify");
 			int getMonth = c.getColumnIndex("month");
 			int getYear = c.getColumnIndex("year");
+			int getCategory = c.getColumnIndex("category");
 			getKey = c.getColumnIndex("key");
 
 			do {
@@ -281,10 +309,10 @@ public class Window1 extends ListActivity {
 
 				if (keyWord.equals("BALANCE")) {
 					list.add(new MyList(c.getString(getDate), "Sum: "
-							+ c.getString(getSumm) + ".00UAH", "Note: "
-							+ c.getString(getNotify) + c.getString(getMonth)
-							+ c.getString(getYear), c.getString(getKey), null,
-							null, null));
+							+ c.getString(getSumm) + ".00$", "Note: "
+							+ c.getString(getNotify) + "\nCategory: "
+							+ c.getString(getCategory), c.getString(getKey),
+							null, null, null));
 					if (c.getString(getSumm).charAt(0) == (char) 43) {
 						total += d;
 					} else {
@@ -292,10 +320,10 @@ public class Window1 extends ListActivity {
 					}
 				} else if (keyWord.equals(month)) {
 					list.add(new MyList(c.getString(getDate), "Sum: "
-							+ c.getString(getSumm) + ".00UAH", "Note: "
-							+ c.getString(getNotify) + c.getString(getMonth)
-							+ c.getString(getYear), c.getString(getKey), null,
-							null, null));
+							+ c.getString(getSumm) + ".00$", "Note: "
+							+ c.getString(getNotify) + "\nCategory: "
+							+ c.getString(getCategory), c.getString(getKey),
+							null, null, null));
 					if (c.getString(getSumm).charAt(0) == (char) 43) {
 						total += d;
 					} else {
@@ -306,18 +334,18 @@ public class Window1 extends ListActivity {
 		}
 
 		if (c.getCount() == 0) {
-			list.add(new MyList("No note yet..", null, null, null,
-					null, null, null));
-			balance.setText("BALANCE: 0.00UAH");
+			list.add(new MyList("No note yet..", null, null, null, null, null,
+					null));
+			balance.setText("BALANCE: 0.00$");
 			balance.setTextColor(Color.parseColor("#23AD41"));
 		} else {
 			String totalTwo;
 			if (total == 0) {
-				totalTwo = String.valueOf(total) + ".00UAH";
+				totalTwo = String.valueOf(total) + ".00$";
 			} else if (total > 0) {
-				totalTwo = "+" + String.valueOf(total) + ".00UAH";
+				totalTwo = "+" + String.valueOf(total) + ".00$";
 			} else {
-				totalTwo = String.valueOf(total) + ".00UAH";
+				totalTwo = String.valueOf(total) + ".00$";
 			}
 			balance.setText(keyWord + ": " + totalTwo);
 			if (total > 0) {
@@ -343,62 +371,62 @@ public class Window1 extends ListActivity {
 
 	private void setText() {
 		if (monthCount[0] != 0) {
-			jun.setText("Junaury " + monthCount[0] + ".00UAH");
+			jun.setText("Junaury " + monthCount[0] + ".00$");
 		} else {
 			jun.setText("Junaury");
 		}
 		if (monthCount[1] != 0) {
-			feb.setText("February " + monthCount[1] + ".00UAH");
+			feb.setText("February " + monthCount[1] + ".00$");
 		} else {
 			feb.setText("February");
 		}
 		if (monthCount[2] != 0) {
-			mar.setText("March " + monthCount[2] + ".00UAH");
+			mar.setText("March " + monthCount[2] + ".00$");
 		} else {
 			mar.setText("March");
 		}
 		if (monthCount[3] != 0) {
-			apr.setText("April " + monthCount[3] + ".00UAH");
+			apr.setText("April " + monthCount[3] + ".00$");
 		} else {
 			apr.setText("April");
 		}
 		if (monthCount[4] != 0) {
-			may.setText("May " + monthCount[4] + ".00UAH");
+			may.setText("May " + monthCount[4] + ".00$");
 		} else {
 			may.setText("May");
 		}
 		if (monthCount[5] != 0) {
-			june.setText("June " + monthCount[5] + ".00UAH");
+			june.setText("June " + monthCount[5] + ".00$");
 		} else {
 			june.setText("June");
 		}
 		if (monthCount[6] != 0) {
-			july.setText("July " + monthCount[6] + ".00UAH");
+			july.setText("July " + monthCount[6] + ".00$");
 		} else {
 			july.setText("July");
 		}
 		if (monthCount[7] != 0) {
-			aug.setText("August " + monthCount[7] + ".00UAH");
+			aug.setText("August " + monthCount[7] + ".00$");
 		} else {
 			aug.setText("August");
 		}
 		if (monthCount[8] != 0) {
-			sep.setText("September " + monthCount[8] + ".00UAH");
+			sep.setText("September " + monthCount[8] + ".00$");
 		} else {
 			sep.setText("September");
 		}
 		if (monthCount[9] != 0) {
-			oct.setText("October " + monthCount[9] + ".00UAH");
+			oct.setText("October " + monthCount[9] + ".00$");
 		} else {
 			oct.setText("October");
 		}
 		if (monthCount[10] != 0) {
-			nov.setText("November " + monthCount[10] + ".00UAH");
+			nov.setText("November " + monthCount[10] + ".00$");
 		} else {
 			nov.setText("November");
 		}
 		if (monthCount[11] != 0) {
-			dec.setText("December " + monthCount[11] + ".00UAH");
+			dec.setText("December " + monthCount[11] + ".00$");
 		} else {
 			dec.setText("December");
 		}
@@ -418,22 +446,78 @@ public class Window1 extends ListActivity {
 	}
 
 	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu_v1, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(Window1.this);
+		LayoutInflater inflater = Window1.this.getLayoutInflater();
+		View vw = inflater.inflate(R.layout.two_button_lyaout, null);
+		RadioGroup rg = (RadioGroup) vw.findViewById(R.id.radioGroup);
+		RadioButton showMonth = (RadioButton) vw.findViewById(R.id.showMonth);
+		RadioButton showCategory = (RadioButton) vw
+				.findViewById(R.id.showCategory);
+
+		onRadioButtonClicked(rg);
+		builder.setView(inflater.inflate(R.layout.two_button_lyaout, null))
+				.setPositiveButton("Cancel",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int id) {
+								dialog.cancel();
+							}
+						})
+				.setNegativeButton("Confirm",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int id) {
+								dialog.cancel();
+							}
+						});
+		AlertDialog alert = builder.create();
+		alert.show();
+		return super.onOptionsItemSelected(item);
+	}
+
+	public void onRadioButtonClicked(View view) {
+		Log.d("MyLog", "--------------show 11111 on");
+
+		switch (view.getId()) {
+		case R.id.radioGroup:
+			Log.d("MyLog", "radioGroupradioGroupradioGroupradioGroup month on");
+		break;
+		case R.id.showMonth:
+				Log.d("MyLog", "show month on");
+			break;
+		case R.id.showCategory:
+				Log.d("MyLog", "show category on");
+			break;
+		}
+	}
+
+	@Override
 	public void onBackPressed() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(Window1.this);
 		LayoutInflater inflater = Window1.this.getLayoutInflater();
 		builder.setView(inflater.inflate(R.layout.exit_dialog_lyaout, null))
 				.setTitle("Exit Balance?")
-				.setPositiveButton("No",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int id) {
-								dialog.cancel();
-							}
-						})
-				.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+				.setPositiveButton("No", new DialogInterface.OnClickListener() {
+					@Override
 					public void onClick(DialogInterface dialog, int id) {
-						finish();
+						dialog.cancel();
 					}
-				});
+				})
+				.setNegativeButton("Yes",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int id) {
+								finish();
+							}
+						});
 		AlertDialog alert = builder.create();
 		alert.show();
 	}

@@ -16,6 +16,7 @@ public class CustomAdapter extends SimpleAdapter {
 	}
 
 
+	@Override
 	public void setViewText(TextView v, String text) {
 		if (v.getId() == R.id.summCustomList && text != "" ) {
 			if ( text.charAt(5) == (char)43 ) {

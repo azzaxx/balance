@@ -10,7 +10,7 @@
         android:orientation="horizontal" >
 
         <LinearLayout
-            android:layout_width="89dp"
+            android:layout_width="99dp"
             android:layout_height="match_parent"
             android:background="#ff0000"
             android:orientation="vertical" >
@@ -23,6 +23,7 @@
                 android:background="#1c0772"
                 android:gravity="center"
                 android:text="January"
+                android:textSize="14sp"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -33,6 +34,7 @@
                 android:background="#3415b0"
                 android:gravity="center"
                 android:text="February"
+                android:textSize="14sp"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -43,6 +45,7 @@
                 android:background="#008500"
                 android:gravity="center"
                 android:text="March"
+                android:textSize="14sp"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -53,6 +56,7 @@
                 android:background="#00cc00"
                 android:gravity="center"
                 android:text="April"
+                android:textSize="14sp"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -63,6 +67,7 @@
                 android:background="#269926"
                 android:gravity="center"
                 android:text=" May"
+                android:textSize="14sp"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -73,6 +78,7 @@
                 android:background="#ffcf00"
                 android:gravity="center"
                 android:text="June"
+                android:textSize="14sp"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -83,6 +89,7 @@
                 android:background="#bfa430"
                 android:gravity="center"
                 android:text=" July"
+                android:textSize="14sp"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -93,6 +100,7 @@
                 android:background="#a68700"
                 android:gravity="center"
                 android:text="August"
+                android:textSize="14sp"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -103,6 +111,7 @@
                 android:background="#ff0000"
                 android:gravity="center"
                 android:text="September"
+                android:textSize="14sp"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -113,6 +122,7 @@
                 android:background="#bf3030"
                 android:gravity="center"
                 android:text="October"
+                android:textSize="14sp"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -123,6 +133,7 @@
                 android:background="#a60000"
                 android:gravity="center"
                 android:text="November"
+                android:textSize="14sp"
                 android:textColor="#ffffff" />
 
             <TextView
@@ -133,6 +144,7 @@
                 android:background="#6549d7"
                 android:gravity="center"
                 android:text="December"
+                android:textSize="14sp"
                 android:textColor="#ffffff" />
         </LinearLayout>
 
@@ -140,13 +152,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#e4e3ad"
+            android:background="#bcd4be"
             android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="#ffffff"
                 android:orientation="vertical" >
 
                 <TextView
@@ -155,7 +166,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="BALANCE"
-                    android:background="#eabf7b"
+                    android:background="#ffbb33"
                     android:textColor="#ec6118"
                     android:textSize="22dp" />
             </LinearLayout>
@@ -164,13 +175,14 @@
                 android:id="@android:id/list"
                 android:layout_width="match_parent"
                 android:layout_height="432dp"
+                android:transcriptMode="alwaysScroll"
                 android:layout_weight="1" >
             </ListView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#bcd4be"
+                android:background="#ffb300"
                 android:gravity="center"
                 android:orientation="horizontal" >
 

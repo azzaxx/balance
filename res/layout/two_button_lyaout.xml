@@ -1,34 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="210dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:layout_weight="0.43"
-        android:background="#FFBB33"
+        android:background="#FFFFBB33"
         android:contentDescription="@string/app_name"
         android:scaleType="center"
         android:src="@drawable/ic_launcher" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:text="Display options:"
+        android:textSize="32sp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/buttonProfit"
+        <RadioButton
+            android:id="@+id/showMonth"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="Доход" />
+            android:layout_height="wrap_content"
+            android:text="Show month"
+            android:checked="true"
+            android:textColor="#ffffff"
+            android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/buttonLose"
+        <RadioButton
+            android:id="@+id/showCategory"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="Расход" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:text="Show category"
+            android:textColor="#ffffff"
+            android:layout_weight="1" />
+    </RadioGroup>
+
 </LinearLayout>

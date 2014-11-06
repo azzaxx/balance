@@ -23,6 +23,7 @@ public class Window2 extends ListActivity {
 	private SQLiteDatabase db;
 	private Cursor c;
 	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);

@@ -42,13 +42,16 @@ public class Window3 extends Activity implements OnClickListener {
 	private String[] month = { "Junaury", "February", "March", "April", "May",
 			"June", "July", "August", "September", "October", "November",
 			"December" };
-	private String[] category = {"Food", "Road", "Home", "Vacation", "Shop",
-			"Medecine", "Car", "Family", "Pets", "Gifts", "Poker", "Other"};
+	private String[] category = { "Food ", "Road ", "Home ", "Vacation ",
+			"Shop ", "Medecine ", "Car ", "Family ", "Pets ", "Gifts ",
+			"Poker ", "Other" };
+	private ContentValues cv;
 
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.window3_v2);
-		
+
 		food = (CheckBox) findViewById(R.id.foodCheckBox);
 		road = (CheckBox) findViewById(R.id.roadCheckBox);
 		home = (CheckBox) findViewById(R.id.homeCheckBox);
@@ -83,7 +86,7 @@ public class Window3 extends Activity implements OnClickListener {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void onClick(View v) {
-		ContentValues cv = new ContentValues();
+		cv = new ContentValues();
 		SQLiteDatabase db = myDb.getWritableDatabase();
 		String dateText = date.getText().toString();
 		String summText = addUAH;
@@ -97,6 +100,7 @@ public class Window3 extends Activity implements OnClickListener {
 				cv.put("key", key);
 				cv.put("month", month[myMonth]);
 				cv.put("year", myYear);
+				checkCheck();
 				db.insert(tableName, null, cv);
 			}
 			db.close();
@@ -127,112 +131,123 @@ public class Window3 extends Activity implements OnClickListener {
 			Button bck = (Button) vw.findViewById(R.id.buttonBck);
 
 			one.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("1");
-					} else if (text.getText().length() < 9) {
+					} else if (text.getText().length() < 7) {
 						String te = (String) text.getText();
 						text.setText(te + "1");
 					}
 				}
 			});
-
 			two.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("2");
-					} else if (text.getText().length() < 9) {
+					} else if (text.getText().length() < 7) {
 						String te = (String) text.getText();
 						text.setText(te + "2");
 					}
 				}
 			});
 			three.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("3");
-					} else if (text.getText().length() < 9) {
+					} else if (text.getText().length() < 7) {
 						String te = (String) text.getText();
 						text.setText(te + "3");
 					}
 				}
 			});
 			four.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("4");
-					} else if (text.getText().length() < 9) {
+					} else if (text.getText().length() < 7) {
 						String te = (String) text.getText();
 						text.setText(te + "4");
 					}
 				}
 			});
 			five.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("5");
-					} else if (text.getText().length() < 9) {
+					} else if (text.getText().length() < 7) {
 						String te = (String) text.getText();
 						text.setText(te + "5");
 					}
 				}
 			});
 			six.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("6");
-					} else if (text.getText().length() < 9) {
+					} else if (text.getText().length() < 7) {
 						String te = (String) text.getText();
 						text.setText(te + "6");
 					}
 				}
 			});
 			seven.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("7");
-					} else if (text.getText().length() < 9) {
+					} else if (text.getText().length() < 7) {
 						String te = (String) text.getText();
 						text.setText(te + "7");
 					}
 				}
 			});
 			eight.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("8");
-					} else if (text.getText().length() < 9) {
+					} else if (text.getText().length() < 7) {
 						String te = (String) text.getText();
 						text.setText(te + "8");
 					}
 				}
 			});
 			nine.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("9");
-					} else if (text.getText().length() < 9) {
+					} else if (text.getText().length() < 7) {
 						String te = (String) text.getText();
 						text.setText(te + "9");
 					}
 				}
 			});
 			zero.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					if ((String) text.getText() == "0") {
 						text.setText("0");
-					} else if (text.getText().length() < 9) {
+					} else if (text.getText().length() < 7) {
 						String te = (String) text.getText();
 						text.setText(te + "0");
 					}
 				}
 			});
 			clear.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					text.setText("0");
 				}
 			});
 			bck.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View v) {
 					if (text.getText().length() > 1) {
 						String te = (String) text.getText();
@@ -245,15 +260,17 @@ public class Window3 extends Activity implements OnClickListener {
 			});
 			dialog.setNegativeButton("Add",
 					new DialogInterface.OnClickListener() {
+						@Override
 						public void onClick(DialogInterface dialog, int id) {
 							String te = (String) text.getText();
 							addUAH = te;
-							summ.setText(te + ".00UAH");
+							summ.setText(te + ".00$");
 							dialog.cancel();
 						}
 					});
 			dialog.setPositiveButton("Cancel",
 					new DialogInterface.OnClickListener() {
+						@Override
 						public void onClick(DialogInterface dialog, int id) {
 							dialog.cancel();
 						}
@@ -262,6 +279,36 @@ public class Window3 extends Activity implements OnClickListener {
 		}
 	}
 
+	private void checkCheck() {
+		String categoryInsert = "";
+		if (food.isChecked())
+			categoryInsert += category[0];
+		if (road.isChecked())
+			categoryInsert += category[1];
+		if (home.isChecked())
+			categoryInsert += category[2];
+		if (vacation.isChecked())
+			categoryInsert += category[3];
+		if (shop.isChecked())
+			categoryInsert += category[4];
+		if (medecine.isChecked())
+			categoryInsert += category[5];
+		if (car.isChecked())
+			categoryInsert += category[6];
+		if (family.isChecked())
+			categoryInsert += category[7];
+		if (pets.isChecked())
+			categoryInsert += category[8];
+		if (gifts.isChecked())
+			categoryInsert += category[9];
+		if (poker.isChecked())
+			categoryInsert += category[10];
+		if (other.isChecked())
+			categoryInsert += category[11];
+		cv.put("category", categoryInsert);
+	}
+
+	@Override
 	@SuppressWarnings("deprecation")
 	protected Dialog onCreateDialog(int id) {
 		if (id == DIALOG_DATE) {
@@ -273,6 +320,7 @@ public class Window3 extends Activity implements OnClickListener {
 	}
 
 	OnDateSetListener myCallBack = new OnDateSetListener() {
+		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear,
 				int dayOfMonth) {
 			date.setText(dayOfMonth + " " + month[monthOfYear] + " " + year);
