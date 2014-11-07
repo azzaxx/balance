@@ -305,6 +305,9 @@ public class Window3 extends Activity implements OnClickListener {
 			categoryInsert += category[10];
 		if (other.isChecked())
 			categoryInsert += category[11];
+		if (categoryInsert.equals("")){
+			categoryInsert += category[11];
+		}
 		cv.put("category", categoryInsert);
 	}
 
