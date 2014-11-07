@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="#000000"
     android:orientation="vertical" >
 
     <ImageView
@@ -16,32 +17,15 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="#ffffff"
-        android:text="Display options:"
-        android:textSize="32sp" />
+        android:textColor="#ffbb33"
+        android:text="Made by Sagaydachniy Alexey \n E-mail: Sagayda4niyAlexey@ukr.net"
+        android:textSize="16sp" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/showMonth"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Show month"
-            android:checked="true"
-            android:textColor="#ffffff"
-            android:layout_weight="1" />
-
-        <RadioButton
-            android:id="@+id/showCategory"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Show category"
-            android:textColor="#ffffff"
-            android:layout_weight="1" />
     </RadioGroup>
 
 </LinearLayout>
