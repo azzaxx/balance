@@ -17,7 +17,7 @@ public class Window2 extends ListActivity {
 	private final String tableName = "Sagayda4niyAlexeySQLiteTable";
 	private DBSQlite myDb = new DBSQlite(this, tableName, null, 1);
 	public final static String INTENT_EXTRA_MESSAGE = "Sagayda4niyAlexeyIntentMESSAGE";
-	private long total = 0; // total это сумма всего, выводится в конце экрана.
+	private long total = 0; // total summ of all, displays at end
 	private ListAdapter adapter;
 	private ArrayList<MyList> list;
 	private SQLiteDatabase db;

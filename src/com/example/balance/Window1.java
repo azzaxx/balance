@@ -1,7 +1,6 @@
 package com.example.balance;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -12,7 +11,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,21 +20,18 @@ import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.CompoundButton;
 import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.nhaarman.listviewanimations.appearance.simple.AlphaInAnimationAdapter;
 
 public class Window1 extends ListActivity {
 	protected static final String INTENT_EXTRA_MESSAGE = "Sagayda4niyAlexeyIntentMESSAGE";
 	private final String tableName = "Sagayda4niyAlexeySQLiteTable";
 	private DBSQlite myDb = new DBSQlite(this, tableName, null, 1);
-	private long total = 0; // total это сумма всего, выводится в конце экрана.
+	private long total = 0; // total  is summ of all
 	private ListAdapter adapter;
 	private ArrayList<MyList> list;
 	private SQLiteDatabase db;
@@ -52,7 +47,10 @@ public class Window1 extends ListActivity {
 			"Poker ", "Other" };
 	private TextView[] textViews = { jun, feb, mar, apr, may, june, july, aug,
 			sep, oct, nov, dec };
-	private String displayOptions = "month";
+	private int[] tvId = { R.id.Junaury, R.id.February, R.id.March, R.id.April, 
+			R.id.May, R.id.June, R.id.July, R.id.August,
+			R.id.September, R.id.October, R.id.November, R.id.December };
+	private String displayOptions = "category";
 	private String keyWord = "BALANCE";
 	private long monthCount[] = new long[12];
 	private long categoryCount[] = new long[12];
@@ -70,20 +68,12 @@ public class Window1 extends ListActivity {
 		profit = (Button) findViewById(R.id.profit);
 		lose = (Button) findViewById(R.id.lose);
 		balance = (TextView) findViewById(R.id.textViewBalanceInShowAll);
-		textViews[0] = (TextView) findViewById(R.id.Junaury);
-		textViews[1] = (TextView) findViewById(R.id.February);
-		textViews[2] = (TextView) findViewById(R.id.March);
-		textViews[3] = (TextView) findViewById(R.id.April);
-		textViews[4] = (TextView) findViewById(R.id.May);
-		textViews[5] = (TextView) findViewById(R.id.June);
-		textViews[6] = (TextView) findViewById(R.id.July);
-		textViews[7] = (TextView) findViewById(R.id.August);
-		textViews[8] = (TextView) findViewById(R.id.September);
-		textViews[9] = (TextView) findViewById(R.id.October);
-		textViews[10] = (TextView) findViewById(R.id.November);
-		textViews[11] = (TextView) findViewById(R.id.December);
-		// SQLiteDatabase db = myDb.getWritableDatabase();
-		// db.delete("Sagayda4niyAlexeySQLiteTable", null, null);
+		for (int i = 0; i < tvId.length; i++) {
+			textViews[i] = (TextView) findViewById(tvId[i]);
+		}
+		
+//		 SQLiteDatabase db = myDb.getWritableDatabase();
+//		 db.delete("Sagayda4niyAlexeySQLiteTable", null, null);
 
 		balance.setOnClickListener(new OnClickListener() {
 
@@ -163,7 +153,7 @@ public class Window1 extends ListActivity {
 		OnItemLongClickListener itemLongListener = new OnItemLongClickListener() {
 
 			@Override
-			// Удаление обьекта
+			// deleting object
 			public boolean onItemLongClick(AdapterView<?> parent, View v,
 					int position, long id) {
 				if (c.getCount() != position && keyWord == "BALANCE") {
@@ -199,8 +189,7 @@ public class Window1 extends ListActivity {
 								public void onClick(DialogInterface dialog,
 										int which) {
 									db.delete(tableName, del, null);
-									onResume(); // Вызывается тут для обновления
-												// списка.
+									onResume(); // refreshing
 								}
 							});
 					builder.setPositiveButton("No",
@@ -216,7 +205,7 @@ public class Window1 extends ListActivity {
 				return true;
 			}
 		};
-		// Построение списка
+		// creating list
 		if (c.moveToFirst()) {
 			int getDate = c.getColumnIndex("date");
 			int getSumm = c.getColumnIndex("summ");
@@ -302,12 +291,15 @@ public class Window1 extends ListActivity {
 				R.id.notifyCustomList };
 		adapter = new CustomAdapter(this, list, R.layout.custom_list_veiw,
 				from, to);
-
-		setListAdapter(adapter);
+		//animation list
+		AlphaInAnimationAdapter animationAdapter = new AlphaInAnimationAdapter((BaseAdapter) adapter);
+		animationAdapter.setAbsListView(getListView());
+		setListAdapter(animationAdapter);
+		
 		getListView().setOnItemLongClickListener(itemLongListener);
 
 		setText();
-
+		
 		super.onResume();
 	}
 
@@ -392,11 +384,9 @@ public class Window1 extends ListActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.showMonth) {
 			displayOptions = "month";
-			Log.d("MyLog", "show month on!!!!");
 			onResume();
 		} else if (item.getItemId() == R.id.showCategory) {
 			displayOptions = "category";
-			Log.d("MyLog", "show category on!!!!");
 			onResume();
 		} else if (item.getItemId() == R.id.about) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(Window1.this);

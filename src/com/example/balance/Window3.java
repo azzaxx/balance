@@ -31,6 +31,12 @@ public class Window3 extends Activity implements OnClickListener {
 	private Button cancel;
 	private CheckBox food, road, home, vacation, shop, medecine, car, family,
 			pets, gifts, poker, other;
+	private CheckBox[] chBox = {food, road, home, vacation, shop, medecine, car
+			, family, pets, gifts, poker, other};
+	private int chBoxid[] = {R.id.foodCheckBox, R.id.roadCheckBox, R.id.homeCheckBox,
+			R.id.vacationCheckBox, R.id.shopCheckBox, R.id.medecineCheckBox, R.id.carCheckBox,
+			R.id.familyCheckBox, R.id.petsCheckBox, R.id.giftsCheckBox, R.id.pokerCheckBox,
+			R.id.otherCheckBox};
 	private int DIALOG_DATE = 1;
 	private int myYear = cal.get(Calendar.YEAR);
 	private int myMonth = cal.get(Calendar.MONTH);
@@ -46,24 +52,24 @@ public class Window3 extends Activity implements OnClickListener {
 			"Shop ", "Medecine ", "Car ", "Family ", "Pets ", "Gifts ",
 			"Poker ", "Other" };
 	private ContentValues cv;
-
+	private Button zero, one, two, three, four, 
+			five, six , seven, eight, nine, 
+			clear, bck;
+	private Button[] buttons = {zero, one, two, three, four, five, six, seven, eight, nine, clear, bck};
+	private int[] buttonsId = {R.id.buttonZero, R.id.buttonOne, R.id.buttonTwo, R.id.buttonThree, R.id.buttonFour,
+			R.id.buttonFive, R.id.buttonSix, R.id.buttonSeven, R.id.buttonEight, R.id.buttonNine,
+			R.id.buttonClear, R.id.buttonBck};
+	private final String[] s = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.window3_v2);
 
-		food = (CheckBox) findViewById(R.id.foodCheckBox);
-		road = (CheckBox) findViewById(R.id.roadCheckBox);
-		home = (CheckBox) findViewById(R.id.homeCheckBox);
-		vacation = (CheckBox) findViewById(R.id.vacationCheckBox);
-		shop = (CheckBox) findViewById(R.id.shopCheckBox);
-		medecine = (CheckBox) findViewById(R.id.medecineCheckBox);
-		car = (CheckBox) findViewById(R.id.carCheckBox);
-		family = (CheckBox) findViewById(R.id.familyCheckBox);
-		pets = (CheckBox) findViewById(R.id.petsCheckBox);
-		gifts = (CheckBox) findViewById(R.id.giftsCheckBox);
-		poker = (CheckBox) findViewById(R.id.pokerCheckBox);
-		other = (CheckBox) findViewById(R.id.otherCheckBox);
+		for (int i = 0; i < chBox.length; i++) {
+			chBox[i] = (CheckBox) findViewById(chBoxid[i]);
+		}
+		
 		date = (TextView) findViewById(R.id.editTextDate);
 		summ = (TextView) findViewById(R.id.editTextSumm);
 		notify = (EditText) findViewById(R.id.editTextNote);
@@ -83,7 +89,6 @@ public class Window3 extends Activity implements OnClickListener {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onClick(View v) {
 		cv = new ContentValues();
@@ -117,136 +122,32 @@ public class Window3 extends Activity implements OnClickListener {
 			final TextView text = (TextView) vw.findViewById(R.id.username);
 			text.setText("0");
 
-			Button one = (Button) vw.findViewById(R.id.buttonOne);
-			Button two = (Button) vw.findViewById(R.id.buttonTwo);
-			Button three = (Button) vw.findViewById(R.id.buttonThree);
-			Button four = (Button) vw.findViewById(R.id.buttonFour);
-			Button five = (Button) vw.findViewById(R.id.buttonFive);
-			Button six = (Button) vw.findViewById(R.id.buttonSix);
-			Button seven = (Button) vw.findViewById(R.id.buttonSeven);
-			Button eight = (Button) vw.findViewById(R.id.buttonEight);
-			Button nine = (Button) vw.findViewById(R.id.buttonNine);
-			Button zero = (Button) vw.findViewById(R.id.buttonZero);
-			Button clear = (Button) vw.findViewById(R.id.buttonClear);
-			Button bck = (Button) vw.findViewById(R.id.buttonBck);
 
-			one.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if ((String) text.getText() == "0") {
-						text.setText("1");
-					} else if (text.getText().length() < 7) {
-						String te = (String) text.getText();
-						text.setText(te + "1");
+			for (int i = 0; i < buttons.length; i++) {
+				buttons[i] = (Button) vw.findViewById(buttonsId[i]);
+			}
+
+			for (int i = 0; i < 10; i++) {
+				final int k = i;
+				buttons[i].setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						if ((String) text.getText() == "0") {
+							text.setText(s[k]);
+						} else if (text.getText().length() < 7) {
+							String te = (String) text.getText();
+							text.setText(te + s[k]);
+						}
 					}
-				}
-			});
-			two.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if ((String) text.getText() == "0") {
-						text.setText("2");
-					} else if (text.getText().length() < 7) {
-						String te = (String) text.getText();
-						text.setText(te + "2");
-					}
-				}
-			});
-			three.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if ((String) text.getText() == "0") {
-						text.setText("3");
-					} else if (text.getText().length() < 7) {
-						String te = (String) text.getText();
-						text.setText(te + "3");
-					}
-				}
-			});
-			four.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if ((String) text.getText() == "0") {
-						text.setText("4");
-					} else if (text.getText().length() < 7) {
-						String te = (String) text.getText();
-						text.setText(te + "4");
-					}
-				}
-			});
-			five.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if ((String) text.getText() == "0") {
-						text.setText("5");
-					} else if (text.getText().length() < 7) {
-						String te = (String) text.getText();
-						text.setText(te + "5");
-					}
-				}
-			});
-			six.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if ((String) text.getText() == "0") {
-						text.setText("6");
-					} else if (text.getText().length() < 7) {
-						String te = (String) text.getText();
-						text.setText(te + "6");
-					}
-				}
-			});
-			seven.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if ((String) text.getText() == "0") {
-						text.setText("7");
-					} else if (text.getText().length() < 7) {
-						String te = (String) text.getText();
-						text.setText(te + "7");
-					}
-				}
-			});
-			eight.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if ((String) text.getText() == "0") {
-						text.setText("8");
-					} else if (text.getText().length() < 7) {
-						String te = (String) text.getText();
-						text.setText(te + "8");
-					}
-				}
-			});
-			nine.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if ((String) text.getText() == "0") {
-						text.setText("9");
-					} else if (text.getText().length() < 7) {
-						String te = (String) text.getText();
-						text.setText(te + "9");
-					}
-				}
-			});
-			zero.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if ((String) text.getText() == "0") {
-						text.setText("0");
-					} else if (text.getText().length() < 7) {
-						String te = (String) text.getText();
-						text.setText(te + "0");
-					}
-				}
-			});
-			clear.setOnClickListener(new OnClickListener() {
+				});
+			}
+			buttons[10].setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					text.setText("0");
 				}
 			});
-			bck.setOnClickListener(new OnClickListener() {
+			buttons[11].setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					if (text.getText().length() > 1) {
@@ -281,32 +182,9 @@ public class Window3 extends Activity implements OnClickListener {
 
 	private void checkCheck() {
 		String categoryInsert = "";
-		if (food.isChecked())
-			categoryInsert += category[0];
-		if (road.isChecked())
-			categoryInsert += category[1];
-		if (home.isChecked())
-			categoryInsert += category[2];
-		if (vacation.isChecked())
-			categoryInsert += category[3];
-		if (shop.isChecked())
-			categoryInsert += category[4];
-		if (medecine.isChecked())
-			categoryInsert += category[5];
-		if (car.isChecked())
-			categoryInsert += category[6];
-		if (family.isChecked())
-			categoryInsert += category[7];
-		if (pets.isChecked())
-			categoryInsert += category[8];
-		if (gifts.isChecked())
-			categoryInsert += category[9];
-		if (poker.isChecked())
-			categoryInsert += category[10];
-		if (other.isChecked())
-			categoryInsert += category[11];
-		if (categoryInsert.equals("")){
-			categoryInsert += category[11];
+		for (int i = 0; i < chBox.length; i++) {
+			if(chBox[i].isChecked())
+				categoryInsert += category[i];
 		}
 		cv.put("category", categoryInsert);
 	}
