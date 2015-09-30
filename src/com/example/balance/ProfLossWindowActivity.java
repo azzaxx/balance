@@ -12,7 +12,7 @@ import android.view.Window;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-public class Window2 extends ListActivity {
+public class ProfLossWindowActivity extends ListActivity {
 	private TextView balance;
 	private final String tableName = "Sagayda4niyAlexeySQLiteTable";
 	private DBSQlite myDb = new DBSQlite(this, tableName, null, 1);

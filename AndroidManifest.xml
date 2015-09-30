@@ -13,7 +13,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="com.example.balance.Window1"
+            android:name="com.example.balance.MainWindowActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>

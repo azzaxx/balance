@@ -27,7 +27,7 @@ import android.widget.TextView;
 
 import com.nhaarman.listviewanimations.appearance.simple.AlphaInAnimationAdapter;
 
-public class Window1 extends ListActivity {
+public class MainWindowActivity extends ListActivity {
 	protected static final String INTENT_EXTRA_MESSAGE = "Sagayda4niyAlexeyIntentMESSAGE";
 	private final String tableName = "Sagayda4niyAlexeySQLiteTable";
 	private DBSQlite myDb = new DBSQlite(this, tableName, null, 1);
@@ -64,7 +64,7 @@ public class Window1 extends ListActivity {
 		setContentView(R.layout.window1_v3);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-		intent = new Intent(this, Window3.class);
+		intent = new Intent(this, AddSummWindowActivity.class);
 		profit = (Button) findViewById(R.id.profit);
 		lose = (Button) findViewById(R.id.lose);
 		balance = (TextView) findViewById(R.id.textViewBalanceInShowAll);
@@ -177,8 +177,8 @@ public class Window1 extends ListActivity {
 							+ "' AND notify = '" + n + "' AND key= '" + k + "'"
 							+ " AND id = " + i;
 					AlertDialog.Builder builder = new AlertDialog.Builder(
-							Window1.this);
-					LayoutInflater inflater = Window1.this.getLayoutInflater();
+							MainWindowActivity.this);
+					LayoutInflater inflater = MainWindowActivity.this.getLayoutInflater();
 					builder.setView(inflater.inflate(
 							R.layout.exit_dialog_lyaout, null));
 					builder.setTitle("Delete note?");
@@ -389,8 +389,8 @@ public class Window1 extends ListActivity {
 			displayOptions = "category";
 			onResume();
 		} else if (item.getItemId() == R.id.about) {
-			AlertDialog.Builder builder = new AlertDialog.Builder(Window1.this);
-			LayoutInflater inflater = Window1.this.getLayoutInflater();
+			AlertDialog.Builder builder = new AlertDialog.Builder(MainWindowActivity.this);
+			LayoutInflater inflater = MainWindowActivity.this.getLayoutInflater();
 			builder.setView(inflater.inflate(R.layout.two_button_lyaout, null))
 					.setPositiveButton("Close",
 							new DialogInterface.OnClickListener() {
@@ -408,8 +408,8 @@ public class Window1 extends ListActivity {
 
 	@Override
 	public void onBackPressed() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(Window1.this);
-		LayoutInflater inflater = Window1.this.getLayoutInflater();
+		AlertDialog.Builder builder = new AlertDialog.Builder(MainWindowActivity.this);
+		LayoutInflater inflater = MainWindowActivity.this.getLayoutInflater();
 		builder.setView(inflater.inflate(R.layout.exit_dialog_lyaout, null))
 				.setTitle("Exit Balance?")
 				.setPositiveButton("No", new DialogInterface.OnClickListener() {

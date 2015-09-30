@@ -22,7 +22,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Window3 extends Activity implements OnClickListener {
+public class AddSummWindowActivity extends Activity implements OnClickListener {
 	private Calendar cal = Calendar.getInstance();
 	private TextView date;
 	private TextView summ;
@@ -85,7 +85,7 @@ public class Window3 extends Activity implements OnClickListener {
 
 		myDb = new DBSQlite(this, tableName, null, 1);
 		Intent intent = getIntent();
-		key = intent.getStringExtra(Window2.INTENT_EXTRA_MESSAGE);
+		key = intent.getStringExtra(ProfLossWindowActivity.INTENT_EXTRA_MESSAGE);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
@@ -115,8 +115,8 @@ public class Window3 extends Activity implements OnClickListener {
 		} else if (v.getId() == R.id.editTextDate) {
 			showDialog(DIALOG_DATE);
 		} else if (v.getId() == R.id.editTextSumm) {
-			AlertDialog.Builder dialog = new AlertDialog.Builder(Window3.this);
-			LayoutInflater inflater = LayoutInflater.from(Window3.this);
+			AlertDialog.Builder dialog = new AlertDialog.Builder(AddSummWindowActivity.this);
+			LayoutInflater inflater = LayoutInflater.from(AddSummWindowActivity.this);
 			View vw = inflater.inflate(R.layout.custom_dialog_lyaout, null);
 			dialog.setView(vw);
 			final TextView text = (TextView) vw.findViewById(R.id.username);
