@@ -21,7 +21,7 @@ import android.widget.TextView;
 public class ShowAll extends ListActivity {
 	private final String tableName = "MySQLiteTable";
 	private DBSQlite myDb = new DBSQlite(this, tableName, null, 1);
-	private int total = 0; // total это сумма всего, выводится в конце экрана.
+	private int total = 0; // total summ
 	private ListAdapter adapter;
 	private ArrayList<MyList> list;
 	private SQLiteDatabase db;
@@ -66,7 +66,7 @@ public class ShowAll extends ListActivity {
 					final String k = c.getString(getK);
 					final String del = "date = '" + d + "' AND summ = '" + s
 							+ "' AND notify = '" + n + "' AND key= '" + k + "'";
-					// строка для удаления записи с базы данных
+					// delete all
 
 					AlertDialog.Builder builder = new AlertDialog.Builder(
 							ShowAll.this);
@@ -82,8 +82,7 @@ public class ShowAll extends ListActivity {
 										int which) {
 									db.delete(tableName, del, null);
 									total = 0;
-									onResume(); // Вызывается тут для обновления
-												// списка.
+									onResume(); // refresh list
 								}
 							});
 					builder.setPositiveButton("Нет",
